@@ -112,6 +112,12 @@
                 required: "Por favor, debe registrar su información académica"
             }
         },
+        'form-check-cedula': {
+            notEqualTo:"#check-cedula",
+            messages: {
+                notEqualTo:"Cédula ya registrada. Por favor, ingrese otra"
+            }
+        },
         'select-required-form': {
             valueNotEquals: "default",
             messages: {

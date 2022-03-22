@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 class Handler extends ExceptionHandler
 {
@@ -51,6 +52,16 @@ class Handler extends ExceptionHandler
 
             return redirect('/login');
 
+        }
+
+        # Excepciones de base de datos
+        if ($exception instanceof \PDOException) {
+            # Manejo de errores con JavaScript
+            return redirect()->back()
+            ->with('msg','No se pudo establecer conexion con el servidor')
+            ->with('title-msg','Error')
+            ->with('type','error')
+            ->with('icon','error');
         }
 
         return parent::render($request, $exception);

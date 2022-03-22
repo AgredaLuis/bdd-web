@@ -37,7 +37,7 @@
 
         <style type="text/css">
             .font-note{
-                font-size: 1rem !important;
+                font-size: 0.65rem !important;
             }
             .font-label-form
             {
@@ -89,10 +89,87 @@
             {
                 cursor: pointer;
             }
-            .font-size-table
+            .font-size-details
+            {
+                font-size: 0.60rem !important;   
+            }
+            .tbody-font tr *
             {
                 font-size: 0.75rem !important;   
             }
+            .tbody-font .i-font-table{
+                font-size: 1.75rem !important;
+            }
+            .row-info{
+                font-size: 0.75rem !important;
+                text-transform: uppercase;  
+            }
+            .i-font-block{
+                font-size: 1.00rem !important;
+            }
+            .tbody-font .i-font-details{
+                font-size: 1.10rem !important;
+                cursor: pointer;
+            }
+            .btn-details{
+                font-size: 0.75rem !important;  
+                font-weight: bold;
+            }
+            .tbody-font .p-font-details{
+                font-size: 0.55rem !important;
+            }
+            .breadcrumb-item-font{
+                font-size: 0.80rem !important;
+            }
+            .breadcrumb-item-font-active{
+                font-size: 0.70rem !important;
+            }
+            .breadcrumb.breadcrumb-alt .breadcrumb-item + .breadcrumb-item::before{
+                font-size: 0.65rem !important;   
+            }
+            .sidebar-brand-menu{
+                height: 1.60rem !important; 
+            }
+            /*.row-filter{
+                font-size: 0.75rem !important;
+                text-transform: uppercase;  
+            }
+            .row-filter input{
+                font-size: 0.75rem !important;
+                text-transform: uppercase;  
+            }
+            .dataTables_filter {
+               float: left !important;
+            }
+            .dataTables_filter input[type="search"] {
+               width: 100% !important;
+            }*/
+            .nav-item-active{
+                background-color: #f8f9fa !important;
+                color:#000 !important;                
+            }
+            .nav-item-active a{
+                color:#000 !important;
+                font-weight: bold !important;
+            }
+            .nav-item-active i{
+                color:#000 !important;
+                font-weight: bold !important;
+            }            
+            @media (min-width: 768px){
+
+                .sidebar.toggled {
+                    overflow: visible;
+                    width: 9.5rem !important;
+                }
+                .sidebar.toggled .nav-item .nav-link {
+                    width: 9.5rem !important;
+                }
+
+            }
+            .sidebar-dark hr.sidebar-divider {
+                border-top: 1px solid rgba(255,255,255,.30) !important;
+            }            
         </style>
 
         <!-- JS-->
@@ -102,15 +179,19 @@
         <!--DATATABLE-->
             <link rel="stylesheet" href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/datatables/buttons-bs4/buttons.bootstrap4.min.css') }}">
-            <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
-            <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('vendor/datatables/buttons/dataTables.buttons.min.js') }}"></script>
-            <script src="{{ asset('vendor/datatables/buttons/buttons.print.min.js') }}"></script>
-            <script src="{{ asset('vendor/datatables/buttons/buttons.html5.min.js') }}"></script>
-            <script src="{{ asset('vendor/datatables/buttons/buttons.flash.min.js') }}"></script>
-            <script src="{{ asset('vendor/datatables/buttons/buttons.colVis.min.js') }}"></script>
-            <script src="{{ asset('vendor/be_tables_datatables.min.js') }}"></script>
+            
         <!--FIN DE DATATABLE-->
+
+
+
+        <link rel="stylesheet" href="{{ asset('Dashmix/src/assets/js/plugins/datatables/dataTables.bootstrap4.css') }}">
+        <link rel="stylesheet" href="{{ asset('Dashmix/src/assets/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css') }}">
+        <link rel="stylesheet" id="css-main" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
+
+        <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="{{ asset('Dashmix/src/assets/js/plugins/slick-carousel/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('Dashmix/src/assets/js/plugins/slick-carousel/slick-theme.css') }}">
+
         <script type="text/javascript">
             function AcceptNum(evt){
                 //ACEPTA NUMERO
@@ -204,7 +285,7 @@
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
-        </a>
+        </a>       
 
         <!-- JS -->
             <!-- Bootstrap core JavaScript-->
@@ -259,6 +340,30 @@
             <script src="{{ asset('Dashmix/src/assets/js/plugins/es6-promise/es6-promise.auto.min.js') }}"></script>
             <script src="{{ asset('Dashmix/src/assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
+
+
+            <!-- Page JS Plugins -->
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/datatables/buttons/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/datatables/buttons/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/datatables/buttons/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/datatables/buttons/buttons.flash.min.js') }}"></script>
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
+
+        <!-- Page JS Code-->
+
+        <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+
+        <!-- Page JS Plugins -->
+        <script src="{{ asset('Dashmix/src/assets/js/plugins/slick-carousel/slick.min.js') }}"></script>
+
+        <!-- Page JS Code 
+        <script src="{{ asset('Dashmix/src/assets/js/pages/be_comp_onboarding.min.js') }}"></script>-->
+
+        
+
             <script>
                 
                 //Bloquear la tecla ENTER
@@ -278,8 +383,19 @@
 
                 /*Habilitando tooltip*/
                 $(function () {
-                  $('[data-toggle="tooltip"]').tooltip()
-                })
+                  
+                  $('[data-toggle="tooltip"]').tooltip();
+
+                  //Dashmix.block('state_toggle', '.block-load');
+
+                });
+
+                $( window ).on("load",function() {
+                            
+                    //Dashmix.block('state_normal', '.block-mode-loading-refresh');
+
+                });
+
             </script>
         <!-- FIN DE JS -->
 

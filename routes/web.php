@@ -61,9 +61,14 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 		//PERSONAS
 		Route::get('/personas/edit/{id}', 'PersonaController@edit')->name('personas.edit');
 		Route::put('/personas/{id}/{retorno?}/{idalterno?}', 'PersonaController@update')->name('personas.update');
+		Route::get('/ConsultarPersona','PersonaController@getPersona')->name('ConsultarPersona');
 
 		//PROGRAMA
 		Route::get('/programas/index', 'ProgramaController@index')->name('programas.index');
+
+		//NUCLEO PROGRAMA
+		Route::get('/nucleoprogramas/index', 'NucleoProgramaController@index')->name('nucleoprogramas.index');
+		Route::get('/nucleoprogramas/edit/{id}', 'NucleoProgramaController@edit')->name('nucleoprogramas.edit');
 
 		//MUNICIPIO
 		Route::get('/MunicipioEstado','MunicipioController@getMunicipiosEstado')->name('MunicipioEstado');

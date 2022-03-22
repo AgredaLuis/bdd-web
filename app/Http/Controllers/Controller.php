@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 
 //ANEXANDO SEGURIDAD
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 //MANEJO DE TRANSACCIONES
 use Illuminate\Support\Facades\DB;
@@ -61,7 +62,7 @@ class Controller extends BaseController
         }
         else{
             $query = $modelo::select("*")
-                        ->where("activo", "=", 'A');
+                        ->where("activo", "=", true);
         }
 
         //Agregar las filtros que van al index
@@ -118,7 +119,9 @@ class Controller extends BaseController
     * @return \Illuminate\Http\Response
     */
     public function edit($id=0, $idalterno=0)
-    {//dd($id);
+    {   
+        //Desencripta el id de la entidad a editar   
+        $id =  Crypt::decrypt($id);
         //Agregar los plucks
         if(method_exists($this, "inicializaPlucks")){
             $this->inicializaPlucks();

@@ -15,7 +15,33 @@ class Programa extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre','mencion','descripcion','perfil','titulo','activo','id_area','id_grado','id_modalidad',
+        'id','nombre','descripcion','inicio','perfil','titulo','activo','id_area','id_grado','id_modalidad',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */    
+    public function area()
+    {
+        return $this->belongsTo(Area::class, 'id_area');
+    }
+
+    public function grado()
+    {
+        return $this->belongsTo(Grado::class, 'id_grado');
+    }
+
+    public function modalidad()
+    {
+        return $this->belongsTo(Modalidad::class, 'id_modalidad');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */ 
+    public function menciones()
+    {
+        return $this->hasMany(Mencion::class,'id_programa','id');
+    }
     
 }

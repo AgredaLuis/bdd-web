@@ -33,13 +33,13 @@
             <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Nucleo</label>
             {{
               Form::select(
-                'nucleo',
-                ['individual' => 'Individual','promocion' => 'Promoción'],
+                'id_nucleo',
+                $pluck["Nucleos"],
                 null,
                 [
-                  'class'=>'form-control custom-select text-uppercase font-size-input',
+                  'class'=>'js-select2 form-control custom-select text-uppercase font-size-input',
                   'required'=>true,
-                  'id'=>'nucleo',
+                  'id'=>'id_nucleo',
                   'empty'=>false,
                 ]
               )
@@ -51,13 +51,13 @@
             <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Programa</label>
             {{
               Form::select(
-                'programa',
-                ['individual' => 'Individual','promocion' => 'Promoción'],
+                'id_programa',
+                ['default' => 'Seleccione...'],
                 null,
                 [
-                  'class'=>'form-control custom-select text-uppercase font-size-input',
+                  'class'=>'js-select2 form-control custom-select text-uppercase font-size-input select-disabled',
                   'required'=>true,
-                  'id'=>'programa',
+                  'id'=>'id_programa',
                   'empty'=>false,
                 ]
               )
@@ -138,6 +138,36 @@
           </div>
         </div>
       </div>
+
+      <div class="row push">
+        <div class="col-12">
+          <table class="table table-vcenter table-striped display nowrap table-hover" id="table-oferta-academica" style="width:100%">
+            <thead>
+                <tr class="text-uppercase tr-thead-table">
+                    <th class="font-w700">Núcleo</th>
+                    <th class="font-w700">Programa</th>
+                    <th class="font-w700">Mención</th>
+                </tr>
+            </thead>
+            <tbody class="text-uppercase">
+                @foreach ($coleccion as $elemento)
+                <tr>
+                    <td>
+                        {{$elemento->id_nucleo}}
+                    </td>
+                    <td >
+                        {{$elemento->id_programa}}
+                    </td>
+                    <td>
+                        {{$elemento->cod_udo}}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
       <!-- END Basic Elements -->
     </div>
     <div class="block-content block-content-full block-content-sm bg-body-light text-center">
@@ -147,10 +177,62 @@
     </div>  
   </div>
   <!-- END Elements -->
-
-
-
 </div>
+
+<script type="text/javascript">
+
+  $(function () {  
+
+    $('#table-oferta-academica').DataTable({
+      destroy: true,
+      info: true,
+      paging: true,
+      searching: true,
+      ordering: true,
+      pageLength:100,
+      responsive: true,
+      //lengthMenu:[[5,10,-1],[5,10,"TODOS"]],                 
+      columns:
+      [
+        {name:'producto'},
+        {name:'categoria'},
+        {name:'presentacion'},
+      ],
+      language: 
+      {
+        search:"Buscar:",
+        loadingRecords:"Cargando Registros...",
+        processing:"Procesando...",
+        infoPostFix:"",
+        paginate:
+        { 
+          first:"Primero",
+          previous:"Previo",
+          next:"Proximo",
+          last:"Ultimo"
+        },
+        aria: 
+        {
+          sortAscending:": activate to sort column ascending",
+          sortDescending:": activate to sort column descending"
+        },
+        info:'Mostrando _START_ a _END_ de <span class="font-w700">_TOTAL_ Registros</span>',
+        infoFiltered:'<span class="span-max-registros">(Filtrado de _MAX_ Registros Totales)</span>',
+        lengthMenu:"Mostrar _MENU_ Registros por Pagina",
+        infoEmpty:"No hay registros disponibles",
+        zeroRecords: "NO HAY REGISTROS",
+        decimal:",",
+        thousands:".",
+      },
+      dom:
+        "<'row'<'col-sm-12 col-md-12 py-2 mb-2'f>>"+
+        "<'row row-records'<'col-sm-12'tr>>"+
+        "<'row row-info'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
+    });
+
+  });  
+
+</script>
         
 
 @endsection

@@ -4,10 +4,10 @@
     <!-- Main Container -->
     <main id="main-container">
         <!-- Page Content -->
-        <div class="bg-image" style="background-image: url('img/avaluos.png');">            
-            <div class="row no-gutters bg-primary-op">
+        <div class="bg-image" style="background-image: url('{{ asset('storage/img/avaluos.png') }}');">            
+            <div class="row no-gutters bg-gd-sea-op">
                 <!-- Main Section -->
-                <div class="hero-static col-md-6 d-flex align-items-center bg-white">
+                <div class="hero-static col-md-6 d-flex align-items-center bg-white border-right border-4x">
 
                     <div class="p-3 w-100">
                         <!-- Header -->
@@ -21,7 +21,7 @@
                             <a class="link-fx text-info font-w700 font-size-h2 text-uppercase" href="javascript:void(0)">
                                 <span class="text-dark">Siaep</span><span class="text-info">UDO</span>
                             </a>
-                            <p class="text-uppercase font-w700 font-size-sm text-muted">Iniciar Sesión</p>
+                            <p class="text-uppercase font-w700 font-size-sm text-muted">Iniciar Sesión(Cambio)</p>
                         </div>
                         <!-- END Header -->
 
@@ -76,15 +76,14 @@
 
                 </div>
                 <!-- END Main Section -->
-
                 <!-- Meta Info Section -->
                 <div class="hero-static col-md-6 d-none d-md-flex align-items-md-center justify-content-md-center text-md-center">
-                    <div class="p-3">
-                        <p class="display-4 font-w700 text-white mb-3">
-                            Prepárate con Nosotros
+                    <div class="p-3">                        
+                        <p class="font-size-h5 font-w600 text-white-75 mb-0">
+                            <i class="si si-graduation fa-2x"></i>
                         </p>
-                        <p class="font-size-lg font-w600 text-white-75 mb-0">
-                            Copyright &copy; <span class="js-year-copy">2020</span>
+                        <p class="display-4 font-w700 text-white mb-0 text-uppercase font-w700 font-size-note">
+                            Ingresa y Prepárate con nosotros
                         </p>
                     </div>
                 </div>

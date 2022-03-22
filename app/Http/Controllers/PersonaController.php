@@ -12,6 +12,7 @@ use App\Estado;
 use App\Titulo;
 use App\Universidad;
 use App\TipoTitulo;
+use App\Persona;
 
 class PersonaController extends Controller
 {
@@ -38,7 +39,10 @@ class PersonaController extends Controller
 
         //ARMA EL ARREGLO DE TIPO DE TITULO QUE SE CARGARAN EN EL SELECT
         $TiposTitulos = TipoTitulo::select('nombre','id')->groupBy("nombre","id")->pluck('nombre','id')->prepend('Seleccione...', 'default');
-        parent::addPluck('TiposTitulos',$TiposTitulos);        
+        parent::addPluck('TiposTitulos',$TiposTitulos); 
+
+        //OPCION SELECCIONADA EN EL MENU LATERAL IZQUIERDO
+        parent::addPluck('NavItemActive','datospersonales');        
         
     }
 
@@ -56,6 +60,14 @@ class PersonaController extends Controller
         }
           
         return $continuar;
+    }
+
+    public function getPersona(Request $request)
+    {
+
+        $Persona=Persona::where('ci',$request['ci'])->first();      
+        return Response()->json($Persona); 
+       
     }
 
 }

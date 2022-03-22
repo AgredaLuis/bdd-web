@@ -13,6 +13,7 @@ use App\Modalidad;
 use App\Nucleo;
 use App\Banco;
 use App\Programa;
+use App\NucleoPrograma;
 use App\Role;
 use App\RoleUser;
 use App\Universidad;
@@ -20,6 +21,8 @@ use App\TipoTitulo;
 use App\Estado;
 use App\Municipio;
 use App\Parroquia;
+use App\Mencion;
+use App\TipoProgramacion;
 
 
 class DatabaseSeeder extends Seeder
@@ -102,7 +105,6 @@ class DatabaseSeeder extends Seeder
                     'descripcion'=>'Banco Venezuela',
                 ));
 
-
                 //NUCLEO
                 Nucleo::create(array(
                     'id'=>1,
@@ -128,7 +130,6 @@ class DatabaseSeeder extends Seeder
                     'id'=>5,
                     'nombre'=>'Núcleo de Monagas',
                 ));
-
 
                 //AREA
                 Area::create(array(
@@ -167,7 +168,6 @@ class DatabaseSeeder extends Seeder
                     'descripcion'=>'Tecnología y Ciencias Médicas',
                 ));
 
-
                 //GRADO
                 Grado::create(array(
                     'id'=>1,
@@ -190,7 +190,6 @@ class DatabaseSeeder extends Seeder
                     'titulo'=>'Maestría',
                 ));
 
-
                 //MODALIDAD DE ESTUDIO DE POSTGRADO
                 Modalidad::create(array(
                     'id'=>1,
@@ -204,6 +203,305 @@ class DatabaseSeeder extends Seeder
                     'descripcion'=>'Implica una modalidad de enseñanza de tipo mixto, que combina la educación a distancia con períodos presénciales continuos de corta duración, lo cual permite la participación de candidatos con responsabilidades de empleo. Cada asignatura o módulo, en este sistema, tiene una duración de ocho semanas, siete de las cuales son dedicadas al estudio individual, a distancia, de un manual de instrucción preparado por el docente del curso y una semana de trabajo intensivo o mixto presencial, dedicada al estudio más a fondo de la materia, mediante trabajos en equipo, disertaciones y análisis de casos, guiados por el instructor a cargo de la asignatura. El material didáctico es proporcionado al participante al iniciarse cada módulo, con siete semanas de anticipación. Sin embargo, los períodos a distancia y presenciales pueden variar, de acuerdo a la naturaleza y necesidades de un curso.',
                 ));
 
+                //PROGRAMAS
+                Programa::create(array(
+                    'id'=>1,
+                    'nombre'=>'Maestría en Ciencias Marinas',
+                    'descripcion'=>'-',
+                    'inicio'=>'1971',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>1,
+                    'id_grado'=>3,
+                    'id_modalidad'=>1,
+                ));
+
+                Mencion::create(array(
+                    'id'=>1,
+                    'nombre'=>'Biología Pesquera',
+                    'id_programa'=>1,
+                ));
+
+                Mencion::create(array(
+                    'id'=>2,
+                    'nombre'=>'Biología Marina',
+                    'id_programa'=>1,
+                ));
+
+                Mencion::create(array(
+                    'id'=>3,
+                    'nombre'=>'Oceanografía Física',
+                    'id_programa'=>1,
+                ));
+
+                Mencion::create(array(
+                    'id'=>4,
+                    'nombre'=>'Oceanografía Química',
+                    'id_programa'=>1,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>1,
+                    'cod_udo'=>'10001',
+                    'id_nucleo'=>1,
+                    'id_programa'=>1,
+                ));
+
+                Programa::create(array(
+                    'id'=>2,
+                    'nombre'=>'Doctorado en Ciencias Marinas',
+                    'descripcion'=>'-',
+                    'inicio'=>'1990',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>1,
+                    'id_grado'=>1,
+                    'id_modalidad'=>1,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>2,
+                    'cod_udo'=>'10002',
+                    'id_nucleo'=>1,
+                    'id_programa'=>2,
+                ));
+
+                Programa::create(array(
+                    'id'=>3,
+                    'nombre'=>'Maestría en Biología Aplicada',
+                    'descripcion'=>'-',
+                    'inicio'=>'1986',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>1,
+                    'id_grado'=>3,
+                    'id_modalidad'=>1,
+                ));
+
+                Mencion::create(array(
+                    'id'=>5,
+                    'nombre'=>'Botánica Aplicada',
+                    'id_programa'=>3,
+                ));
+
+                Mencion::create(array(
+                    'id'=>6,
+                    'nombre'=>'Ecología y Toxicología Ambiental',
+                    'id_programa'=>3,
+                ));
+
+                Mencion::create(array(
+                    'id'=>7,
+                    'nombre'=>'Microbiología Aplicada',
+                    'id_programa'=>3,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>3,
+                    'cod_udo'=>'10003',
+                    'id_nucleo'=>1,
+                    'id_programa'=>3,
+                ));
+
+                Programa::create(array(
+                    'id'=>4,
+                    'nombre'=>'Maestría en Física',
+                    'descripcion'=>'-',
+                    'inicio'=>'1985',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>1,
+                    'id_grado'=>3,
+                    'id_modalidad'=>1,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>4,
+                    'cod_udo'=>'10004',
+                    'id_nucleo'=>1,
+                    'id_programa'=>4,
+                ));
+
+                Programa::create(array(
+                    'id'=>5,
+                    'nombre'=>'Maestría en Matemáticas',
+                    'descripcion'=>'-',
+                    'inicio'=>'1974',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>1,
+                    'id_grado'=>3,
+                    'id_modalidad'=>1,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>5,
+                    'cod_udo'=>'10005',
+                    'id_nucleo'=>1,
+                    'id_programa'=>5,
+                ));
+
+                Programa::create(array(
+                    'id'=>6,
+                    'nombre'=>'Maestría en Educación',
+                    'descripcion'=>'-',
+                    'inicio'=>'1988',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>2,
+                    'id_grado'=>3,
+                    'id_modalidad'=>2,
+                ));
+
+                Mencion::create(array(
+                    'id'=>8,
+                    'nombre'=>'Enseñanza del Castellano',
+                    'id_programa'=>6,
+                ));
+
+                Mencion::create(array(
+                    'id'=>9,
+                    'nombre'=>'Enseñanza de la Física',
+                    'id_programa'=>6,
+                ));
+
+                Mencion::create(array(
+                    'id'=>10,
+                    'nombre'=>'Enseñanza del Inglés como Idioma Extranjero',
+                    'id_programa'=>6,
+                ));
+
+                Mencion::create(array(
+                    'id'=>11,
+                    'nombre'=>'Enseñanza de las Matemáticas',
+                    'id_programa'=>6,
+                ));
+
+                Mencion::create(array(
+                    'id'=>12,
+                    'nombre'=>'Enseñanza de la Química',
+                    'id_programa'=>6,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>6,
+                    'cod_udo'=>'10006',
+                    'id_nucleo'=>1,
+                    'id_programa'=>6,
+                ));
+
+                Programa::create(array(
+                    'id'=>7,
+                    'nombre'=>'Doctorado en Educación',
+                    'descripcion'=>'-',
+                    'inicio'=>'1998',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>2,
+                    'id_grado'=>1,
+                    'id_modalidad'=>1,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>7,
+                    'cod_udo'=>'10007',
+                    'id_nucleo'=>1,
+                    'id_programa'=>7,
+                ));
+
+                Programa::create(array(
+                    'id'=>8,
+                    'nombre'=>'Doctorado en Ciencias Administrativas',
+                    'descripcion'=>'-',
+                    'inicio'=>'2000',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>3,
+                    'id_grado'=>1,
+                    'id_modalidad'=>1,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>8,
+                    'cod_udo'=>'20001',
+                    'id_nucleo'=>2,
+                    'id_programa'=>8,
+                ));
+
+                Programa::create(array(
+                    'id'=>9,
+                    'nombre'=>'Maestría en Ciencias Administrativas',
+                    'descripcion'=>'-',
+                    'inicio'=>'1989',
+                    'perfil'=>'-',
+                    'titulo'=>'-',
+                    'id_area'=>3,
+                    'id_grado'=>3,
+                    'id_modalidad'=>2,
+                ));
+
+                Mencion::create(array(
+                    'id'=>13,
+                    'nombre'=>'Administración Agrícola',
+                    'id_programa'=>9,
+                ));
+
+                Mencion::create(array(
+                    'id'=>14,
+                    'nombre'=>'Administración de la Producción',
+                    'id_programa'=>9,
+                ));
+
+                Mencion::create(array(
+                    'id'=>15,
+                    'nombre'=>'Finanzas',
+                    'id_programa'=>9,
+                ));
+
+                Mencion::create(array(
+                    'id'=>16,
+                    'nombre'=>'Gerencia General',
+                    'id_programa'=>9,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>9,
+                    'cod_udo'=>'10008',
+                    'id_nucleo'=>1,
+                    'id_programa'=>9,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>10,
+                    'cod_udo'=>'20002',
+                    'id_nucleo'=>2,
+                    'id_programa'=>9,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>11,
+                    'cod_udo'=>'30001',
+                    'id_nucleo'=>3,
+                    'id_programa'=>9,
+                ));
+
+                NucleoPrograma::create(array(
+                    'id'=>12,
+                    'cod_udo'=>'50001',
+                    'id_nucleo'=>5,
+                    'id_programa'=>9,
+                ));
+
+                //TIPOS PROGRAMACIONES
+                TipoProgramacion::create(array(
+                    'id'=>1,
+                    'nombre'=>'Llamado a Postgrado',
+                ));
+
+                TipoProgramacion::create(array(
+                    'id'=>2,
+                    'nombre'=>'Inscripciones',
+                ));
 
                 //UNIVERSIDAD
                 Universidad::create(array(
@@ -216,8 +514,7 @@ class DatabaseSeeder extends Seeder
                     'nombre'=>'Universidad Central de Venezuela',
                 ));
 
-
-                //UNIVERSIDAD
+                //TIPO TITULO
                 TipoTitulo::create(array(
                     'id'=>1,
                     'nombre'=>'Licenciatura',
@@ -237,7 +534,6 @@ class DatabaseSeeder extends Seeder
                     'id'=>4,
                     'nombre'=>'Doctorado',
                 ));
-
 
                 //ROLES DE USUARIO
                 Role::create(array(
@@ -282,7 +578,6 @@ class DatabaseSeeder extends Seeder
                  'description'=>'Coordinador de General de Postgrado',
                 ));
 
-
                 //USUARIOS
                 User::create(array(
                  'id'=> 1,
@@ -293,7 +588,6 @@ class DatabaseSeeder extends Seeder
                  'predefined'=>'Administrador',
                 ));
 
-
                 //ASIGNAR ROLES DE USUARIO
                 RoleUser::create(array(
                  'role_id'=> 2,
@@ -301,7 +595,6 @@ class DatabaseSeeder extends Seeder
                  'is_activated'=> true,
                  'is_predefined'=>true,
                 ));
-
 
                 //ESTADOS
                 Estado::create(array(
@@ -313,7 +606,6 @@ class DatabaseSeeder extends Seeder
                  'id'=> 2,
                  'nombre'=>'Anzoátegui',
                 ));
-
 
                 //MUNICIPIOS
                 Municipio::create(array(
@@ -339,7 +631,6 @@ class DatabaseSeeder extends Seeder
                  'nombre'=>'Anaco',
                  'id_estado'=>2,
                 ));
-
 
                 //PARROQUIAS
                 Parroquia::create(array(
@@ -383,7 +674,6 @@ class DatabaseSeeder extends Seeder
                  'nombre'=>'Buena Vista',
                  'id_municipio'=>4,
                 ));
-
 
         Model::reguard();
     }

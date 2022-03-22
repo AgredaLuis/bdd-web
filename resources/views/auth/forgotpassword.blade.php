@@ -5,10 +5,10 @@
     <main id="main-container">
 
         <!-- Page Content -->
-        <div class="bg-image" style="background-image: url('Dashmix/src/assets/media/photos/photo19@2x.jpg');">
+        <div class="bg-image" style="background-image: url('{{ asset('storage/img/avaluos.png') }}');">
             <div class="row no-gutters bg-gd-sun-op">
                 <!-- Main Section -->
-                <div class="hero-static col-md-6 d-flex align-items-center bg-white">
+                <div class="hero-static col-md-6 d-flex align-items-center bg-white border-right border-4x">
 
                     <div class="p-3 w-100">
                         <!-- Header -->
@@ -56,15 +56,14 @@
                     </div>
                 </div>
                 <!-- END Main Section -->
-
                 <!-- Meta Info Section -->
                 <div class="hero-static col-md-6 d-none d-md-flex align-items-md-center justify-content-md-center text-md-center">
-                    <div class="p-3">
-                        <p class="display-4 font-w700 text-white mb-0">
-                            Don’t worry of failure..
+                    <div class="p-3">                        
+                        <p class="font-size-h5 font-w600 text-white-75 mb-0">
+                            <i class="si si-settings fa-2x"></i>
                         </p>
-                        <p class="font-size-h1 font-w600 text-white-75 mb-0">
-                            ..but learn from it!
+                        <p class="display-4 font-w700 text-white mb-0 text-uppercase font-w700 font-size-note">
+                            Recupera tus credenciales
                         </p>
                     </div>
                 </div>

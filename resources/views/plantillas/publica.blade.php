@@ -31,6 +31,12 @@
         <!-- JS-->
             <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
         <!-- FIN DE JS-->
+
+        <style type="text/css">
+            .font-size-note{
+                font-size: 1.50rem !important;
+            }
+        </style>
     </head>
     <body style="background-color: #f8f8f8;">
         <div class="page-container">

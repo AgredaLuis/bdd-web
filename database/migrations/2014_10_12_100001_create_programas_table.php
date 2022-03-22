@@ -20,6 +20,7 @@ class CreateProgramasTable extends Migration
             $table->string('mencion');
             $table->text('descripcion');
             $table->text('perfil');
+            $table->string('inicio');
             $table->string('titulo');
             $table->boolean('activo')->default(true);
             $table->integer('id_area')->unsigned();
