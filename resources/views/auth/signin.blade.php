@@ -21,7 +21,7 @@
                             <a class="link-fx text-info font-w700 font-size-h2 text-uppercase" href="javascript:void(0)">
                                 <span class="text-dark">Siaep</span><span class="text-info">UDO</span>
                             </a>
-                            <p class="text-uppercase font-w700 font-size-sm text-muted">Iniciar Sesión(Cambio)</p>
+                            <p class="text-uppercase font-w700 font-size-sm text-muted">Iniciar Sesión</p>
                         </div>
                         <!-- END Header -->
 

@@ -331,7 +331,8 @@ class Controller extends BaseController
         }
         //Retornamos al index
         if($retorno!='index'){
-            $retorno .='/'.$obj->id;
+            //$retorno .='/'.$obj->id;
+            $retorno .='/'.Crypt::encrypt($obj->id);
         }
 
         //Mensaje de la operación
