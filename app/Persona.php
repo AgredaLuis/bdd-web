@@ -31,6 +31,11 @@ class Persona extends Model
         return $this->belongsTo(User::class, 'email','email');
     }
 
+    public function estudianteprograma()
+    {
+        return $this->belongsTo(EstudiantePrograma::class, 'id_persona');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */  

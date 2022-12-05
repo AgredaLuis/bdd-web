@@ -30,5 +30,10 @@ class NucleoPrograma extends Model
     {
         return $this->belongsTo(Programa::class, 'id_programa');
     }
+
+    public function estudianteprograma()
+    {
+        return $this->belongsTo(EstudiantePrograma::class, 'id_nucleo_programa');
+    }
     
 }

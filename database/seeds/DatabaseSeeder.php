@@ -23,7 +23,8 @@ use App\Municipio;
 use App\Parroquia;
 use App\Mencion;
 use App\TipoProgramacion;
-
+use App\Persona;
+use App\EstudiantePrograma;
 
 class DatabaseSeeder extends Seeder
 {
@@ -578,12 +579,36 @@ class DatabaseSeeder extends Seeder
                  'description'=>'Coordinador de General de Postgrado',
                 ));
 
+                Role::create(array(
+                 'id'=> 8,
+                 'name'=>'Aspirante',
+                 'description'=>'Aspirante',
+                ));
+
                 //USUARIOS
                 User::create(array(
                  'id'=> 1,
                  'user'=>'Administrador',
                  'password'=> bcrypt('12345678'),
-                 'email'=>'na948730@gmail.com',
+                 'email'=>'luisajose@gmail.com',
+                 'is_activated'=>true,
+                 'predefined'=>'Administrador',
+                ));
+
+                User::create(array(
+                 'id'=> 2,
+                 'user'=>'Administrador',
+                 'password'=> bcrypt('12345678'),
+                 'email'=>'pedroluis@gmail.com',
+                 'is_activated'=>true,
+                 'predefined'=>'Administrador',
+                ));
+
+                User::create(array(
+                 'id'=> 3,
+                 'user'=>'Administrador',
+                 'password'=> bcrypt('12345678'),
+                 'email'=>'dariojose@gmail.com',
                  'is_activated'=>true,
                  'predefined'=>'Administrador',
                 ));
@@ -592,6 +617,20 @@ class DatabaseSeeder extends Seeder
                 RoleUser::create(array(
                  'role_id'=> 2,
                  'user_id'=>1,
+                 'is_activated'=> true,
+                 'is_predefined'=>true,
+                ));
+
+                RoleUser::create(array(
+                 'role_id'=> 2,
+                 'user_id'=>2,
+                 'is_activated'=> true,
+                 'is_predefined'=>true,
+                ));
+
+                RoleUser::create(array(
+                 'role_id'=> 2,
+                 'user_id'=>3,
                  'is_activated'=> true,
                  'is_predefined'=>true,
                 ));
@@ -673,6 +712,101 @@ class DatabaseSeeder extends Seeder
                  'id'=> 7,
                  'nombre'=>'Buena Vista',
                  'id_municipio'=>4,
+                ));
+
+                //PERSONAS
+                Persona::create(array(
+                 'id'=> 1,
+                 'ci'=>'10000000',
+                 'nombre'=> 'LUISA JOSÉ',
+                 'apellido'=>'LUNA PATIÑO',
+                 'nacionalidad'=>'V',
+                 'genero'=>'F',
+                 'estatus_civil'=>'S',
+                 'fecha_nacimiento'=>'1987-04-09',
+                 'email'=>'luisajose@gmail.com',
+                 'telefono_movil'=>'(0412) 088-3413',
+                 'telefono_local'=>'(0412) 088-3413',
+                 'discapacidad'=> NULL,                 
+                 'imagen'=>'img/user2-160x160.jpg',
+                 'trabajo_empresa'=>'universidad de oriente',
+                 'trabajo_cargo'=>'analista programador',
+                 'trabajo_tiempo_servicio'=>4,
+                 'activo'=>true,
+                 'direccion'=>'Fe y alegria. SUPER BLOQUES. BLOQUES 29. APTO. 01-05.',
+                 'id_parroquia'=>3,
+                 'ciudad'=>'CUMANA',
+                 'confirmado'=>false,
+                ));
+
+                Persona::create(array(
+                 'id'=> 2,
+                 'ci'=>'20000000',
+                 'nombre'=> 'PEDRO LUIS',
+                 'apellido'=>'MATA SALAZAR',
+                 'nacionalidad'=>'V',
+                 'genero'=>'M',
+                 'estatus_civil'=>'C',
+                 'fecha_nacimiento'=>'1987-04-09',
+                 'email'=>'pedroluis@gmail.com',
+                 'telefono_movil'=>'(0412) 088-3413',
+                 'telefono_local'=>'(0412) 088-3413',
+                 'discapacidad'=> NULL,                 
+                 'imagen'=>'img/user2-160x160.jpg',
+                 'trabajo_empresa'=>'universidad de oriente',
+                 'trabajo_cargo'=>'analista programador',
+                 'trabajo_tiempo_servicio'=>4,
+                 'activo'=>true,
+                 'direccion'=>'Fe y alegria. SUPER BLOQUES. BLOQUES 29. APTO. 01-05.',
+                 'id_parroquia'=>3,
+                 'ciudad'=>'CUMANA',
+                 'confirmado'=>false,
+                ));
+
+                Persona::create(array(
+                 'id'=> 3,
+                 'ci'=>'30000000',
+                 'nombre'=> 'DARIO JOSE',
+                 'apellido'=>'LEMUZ LOAIZA',
+                 'nacionalidad'=>'V',
+                 'genero'=>'M',
+                 'estatus_civil'=>'S',
+                 'fecha_nacimiento'=>'1987-04-09',
+                 'email'=>'dariojose@gmail.com',
+                 'telefono_movil'=>'(0412) 088-3413',
+                 'telefono_local'=>'(0412) 088-3413',
+                 'discapacidad'=> NULL,                 
+                 'imagen'=>'img/user2-160x160.jpg',
+                 'trabajo_empresa'=>'universidad de oriente',
+                 'trabajo_cargo'=>'analista programador',
+                 'trabajo_tiempo_servicio'=>4,
+                 'activo'=>true,
+                 'direccion'=>'Fe y alegria. SUPER BLOQUES. BLOQUES 29. APTO. 01-05.',
+                 'id_parroquia'=>3,
+                 'ciudad'=>'CUMANA',
+                 'confirmado'=>false,
+                ));
+
+                //ESTUDIANTE PROGRAMA
+                EstudiantePrograma::create(array(
+                 'id'=> 1,
+                 'activo'=>true,
+                 'id_nucleo_programa'=>1,
+                 'id_persona'=>1,
+                ));
+
+                EstudiantePrograma::create(array(
+                 'id'=> 2,
+                 'activo'=>true,
+                 'id_nucleo_programa'=>1,
+                 'id_persona'=>2,
+                ));
+
+                EstudiantePrograma::create(array(
+                 'id'=> 3,
+                 'activo'=>true,
+                 'id_nucleo_programa'=>2,
+                 'id_persona'=>3,
                 ));
 
         Model::reguard();

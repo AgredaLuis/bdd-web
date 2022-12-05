@@ -6,12 +6,12 @@
     <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
       <h1 class="block-title text-uppercase font-w700 pt-1 vertical-align">
         <i class="fa fa-graduation-cap fa-fw text-black-50"></i>
-        <span class="ml-2 font-size-md text-black">Oferta Academica</span>
+        <span class="ml-2 font-size-md text-black">Aspirantes</span>
       </h1>
       <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-alt">
           <li class="breadcrumb-item text-black text-uppercase breadcrumb-item-font">SIAEPUDO</li>
-          <li class="breadcrumb-item text-black-75 active text-uppercase breadcrumb-item-font-active" aria-current="page">Oferta Academica</li>
+          <li class="breadcrumb-item text-black-75 active text-uppercase breadcrumb-item-font-active" aria-current="page">Aspirantes</li>
         </ol>
       </nav>
     </div>
@@ -19,7 +19,7 @@
 </div>
 
 <div class="content mb-3">
-  <h2 class="content-heading pt-0 mb-0 pb-0 border-bottom font-note text-uppercase">Consulte la informacion de los estudios de Postgrados disponibles</h2>
+  <h2 class="content-heading pt-0 mb-0 pb-0 border-bottom font-note text-uppercase">Consulte la informacion de los aspirantes a los estudios de Postgrados disponibles</h2>
   <!-- Elements -->
   <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
@@ -42,31 +42,13 @@
                   'class'=>'form-control custom-select text-uppercase font-size-input select-filter',
                   'id'=>'id_nucleo',
                   'empty'=>false,
-                  'data-column' => '0'
+                  'data-column' => '2'
                 ]
               )
             }}
           </div>
         </div>
-        <div class="col-3">
-          <div class="form-group">
-            <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Tipo</label>
-            {{
-              Form::select(
-                'tipo',
-                $pluck["Tipos"],
-                null,
-                [
-                  'class'=>'form-control custom-select text-uppercase font-size-input select-filter',
-                  'id'=>'tipo',
-                  'empty'=>false,
-                  'data-column' => '1'
-                ]
-              )
-            }}
-          </div>
-        </div>
-        <div class="col-6">
+        <div class="col-9">
           <div class="form-group">
             <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Programa</label>
             {{
@@ -87,42 +69,33 @@
           <div class="block block-rounded js-appear-enabled animated fadeIn bg-gray-lighter" data-toggle="appear">
             <div class="block-content block-content-full border-left border-3x border-dark">             
               <p class="text-muted mb-0 mt-0 font-size-details text-uppercase font-w700 text-center">
-                Informacion correspondiente a los estudios de postgrado ofertados.
+                Informacion correspondiente de los aspirantes a los estudios de postgrado ofertados.
               </p>
             </div>
           </div> 
-          <table class="table table-vcenter table-striped display nowrap table-hover table-bordered" id="table-oferta-academica">
+          <table class="table table-vcenter table-striped display nowrap table-hover table-bordered" id="table-aspirantes">
             <thead>
                 <tr class="text-uppercase font-size-sm text-center">
-                    <th class="font-w700">Núcleo</th>
-                    <th class="font-w700">Tipo</th>
+                    <th class="font-w700">Cedula</th>
+                    <th class="font-w700">Nombres y Apellidos</th>
+                    <th class="font-w700">Nucleo</th>
                     <th class="font-w700">Programa</th>
-                    <th class="font-w700">Detalles</th>
                 </tr>
             </thead>
             <tbody class="text-uppercase tbody-font">
                 @foreach ($coleccion as $elemento)
                 <tr>
-                    <td class="text-center">
-                        {{$elemento->nucleo}}
+                    <td class="text-left">
+                        {{$elemento->persona->ci}}
                     </td>
-                    <td class="text-center">
-                        {{$elemento->tipo}}
+                    <td class="text-left">
+                      {{$elemento->persona->nombre}} {{$elemento->persona->apellido}}
                     </td>
-                    <td>
-                      <p class="font-w700 mb-0 text-uppercase text-xwork-light">{{ $elemento->programa }}</p>
-                      @if (!is_null($elemento->mencion))
-                        <p class="text-muted mt-1 mb-0 text-uppercase">Mención: {{ $elemento->mencion }}</p>
-                      @endif
+                    <td class="text-left">
+                      {{$elemento->nucleoprograma->nucleo->nombre}}
                     </td>
-                    <td class="text-center p-2">
-                      <a href="{{ route('nucleoprogramas.edit',$elemento->id)}}" class="btn btn-secondary btn-sm pt-2" title="Ver Detalles" style="width: 50%;">
-                        <i class="si si-speech fa-2x i-font-details"></i>
-                      </a>
-                      <!--<a href="{{ route('nucleoprogramas.edit',$elemento->id)}}" class="btn btn-sm btn-outline-secondary pt-2 btn-font-details" title="Ver Detalles" style="width: 50%;" data-status="{{is_null($elemento->programacion)?'inactive':'active'}}">
-                        <i class="i-font-details i-details"></i>
-                        <p class="m-0 font-w700 p-font-details p-details"></p>
-                      </a>-->
+                    <td class="text-left">
+                      {{$elemento->nucleoprograma->programa->nombre}}
                     </td>
                 </tr>
                 @endforeach
@@ -142,7 +115,7 @@
 
   $(function () {  
 
-    table = $('#table-oferta-academica').DataTable({
+    table = $('#table-aspirantes').DataTable({
       destroy: true,
       info: true,
       paging: true,
@@ -152,14 +125,14 @@
       //responsive: true,                 
       columns:
       [
-        {name:'nucleo', orderable:false},
-        {name:'tipo', orderable:false},
-        {name:'programamencion', orderable:false},
-        {name:'detalles', orderable:false},
+        {name:'cedula'},
+        {name:'nombre'},
+        {name:'nucleo'},
+        {name:'programa'},
 
       ],
       initComplete: function() {
-        this.api().columns([0,1]).every(function() {
+        this.api().columns([2]).every(function() {
           
           //COLUMNA A EVALUAR
           var column = this;
@@ -223,17 +196,11 @@
     $('#programa').on( 'keyup',onInputProgramaKeyup);
     $('#restart-filter').on( 'click',onRestartFilterClick);
 
-    $('a[data-status="active"]').find(".p-details").text("Postularse");
-    $('a[data-status="inactive"]').find(".p-details").text("No");
-
-    $('a[data-status="active"]').find(".i-details").addClass("si si-pin fa-2x ");
-    $('a[data-status="inactive"]').find(".i-details").addClass("si si-ban fa-2x ");
-
   });  
 
   function onInputProgramaKeyup(){
 
-    table.column(2).search( $(this).val() ).draw();
+    table.column(3).search( $(this).val() ).draw();
 
   }
 

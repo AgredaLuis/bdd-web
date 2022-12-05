@@ -72,6 +72,9 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 		Route::get('/nucleoprogramas/index', 'NucleoProgramaController@index')->name('nucleoprogramas.index');
 		Route::get('/nucleoprogramas/edit/{id}', 'NucleoProgramaController@edit')->name('nucleoprogramas.edit');
 
+		//ESTUDIANTES PROGRAMA
+		Route::get('/aspirantes/index', 'AspiranteController@index')->name('aspirantes.index');
+
 		//MUNICIPIO
 		Route::get('/MunicipioEstado','MunicipioController@getMunicipiosEstado')->name('MunicipioEstado');
 

@@ -49,8 +49,13 @@
           <i class="fa fa-graduation-cap"></i>
           <span>Mis Programas</span></a>
       </li>
-      <li class="nav-item {{$pluck['NavItemActive'] == 'aspirantes'?'nav-item-active':''}}">
+      <li class="nav-item {{$pluck['NavItemActive'] == 'misprogramas'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('home') }}">
+          <i class="fa fa-graduation-cap"></i>
+          <span>Mis Asignaturas Dictadas</span></a>
+      </li>
+      <li class="nav-item {{$pluck['NavItemActive'] == 'aspirantes'?'nav-item-active':''}}">
+        <a class="nav-link" href="{{ route('aspirantes.index') }}">
           <i class="fa fa-graduation-cap"></i>
           <span>Aspirantes</span></a>
       </li>
