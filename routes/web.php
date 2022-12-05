@@ -65,6 +65,8 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 
 		//PROGRAMA
 		Route::get('/programas/index', 'ProgramaController@index')->name('programas.index');
+		Route::get('/programas/edit/{id}', 'ProgramaController@edit')->name('programas.edit');
+		Route::put('/programas/{id}/{retorno?}/{idalterno?}', 'ProgramaController@update')->name('programas.update');
 
 		//NUCLEO PROGRAMA
 		Route::get('/nucleoprogramas/index', 'NucleoProgramaController@index')->name('nucleoprogramas.index');

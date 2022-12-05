@@ -34,23 +34,31 @@
           <i class="fas fa-fw fa-home"></i>
           <span>Inicio</span></a>
       </li>
-
-      <!-- HOME -->
       <li class="nav-item {{$pluck['NavItemActive'] == 'datospersonales'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('personas.edit',[ Crypt::encrypt(isset(auth()->user()->persona->id)?auth()->user()->persona->id:-1) ])}}">
           <i class="fa fa-address-card"></i>
           <span>Mis Datos Personales</span></a>
       </li>
-      <!-- FIN DE HOME -->
-
-
-      <!-- HOME -->
       <li class="nav-item {{$pluck['NavItemActive'] == 'ofertaacademica'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('nucleoprogramas.index')}}">
           <i class="fa fa-graduation-cap"></i>
           <span>Oferta Académica</span></a>
       </li>
-      <!-- FIN DE HOME -->
+      <li class="nav-item {{$pluck['NavItemActive'] == 'misprogramas'?'nav-item-active':''}}">
+        <a class="nav-link" href="{{ route('home') }}">
+          <i class="fa fa-graduation-cap"></i>
+          <span>Mis Programas</span></a>
+      </li>
+      <li class="nav-item {{$pluck['NavItemActive'] == 'aspirantes'?'nav-item-active':''}}">
+        <a class="nav-link" href="{{ route('home') }}">
+          <i class="fa fa-graduation-cap"></i>
+          <span>Aspirantes</span></a>
+      </li>
+      <li class="nav-item {{$pluck['NavItemActive'] == 'programas'?'nav-item-active':''}}">
+        <a class="nav-link" href="{{ route('programas.index') }}">
+          <i class="fa fa-graduation-cap"></i>
+          <span>Programas</span></a>
+      </li>
 
       <?php echo session()->get('Menu');?>
 
