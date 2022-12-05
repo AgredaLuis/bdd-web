@@ -5,12 +5,12 @@
     <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
       <h1 class="block-title text-uppercase font-w700 pt-1 vertical-align">
         <i class="fa fa-list-ul fa-fw text-black-50"></i>
-        <span class="ml-2 font-size-md text-black">Oferta Academica</span>
+        <span class="ml-2 font-size-md text-black">Detalle del Programa</span>
       </h1>
       <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-alt">
           <li class="breadcrumb-item text-black text-uppercase breadcrumb-item-font">SIAEPUDO</li>
-          <li class="breadcrumb-item text-black-75 text-uppercase active breadcrumb-item-font-active" aria-current="page">Oferta Academica</li>
+          <li class="breadcrumb-item text-black-75 text-uppercase active breadcrumb-item-font-active" aria-current="page">Detalle del Programa</li>
         </ol>
       </nav>
     </div>
@@ -19,12 +19,12 @@
 
 <div class="content mb-3">
 
-  <h2 class="content-heading pt-0 mb-0 pb-0 border-bottom font-note text-uppercase">Consulte la informacion de los estudios de Postgrados disponibles</h2>
+  <h2 class="content-heading pt-0 mb-0 pb-0 border-bottom font-note text-uppercase">Consulte la informacion del programa seleccionado</h2>
 
   <!-- Elements -->
   <div class="block block-rounded block-bordered mt-4">
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
-        <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Datos del Programa</h5>
+        <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">{{$NucleoPrograma->programa->nombre}}</h5>
         <a class="btn btn-sm btn-dark pt-1 text-white btn-details" id="restart-filter" title="Limpiar Filtros" href="{{ route('nucleoprogramas.index')}}">
           <i class="si si-arrow-left"></i><span class="text-uppercase ml-2">Volver</span>
         </a>
@@ -138,11 +138,22 @@
           </div>
         </div>
       </div>
+      <div class="row push">
+        <div class="col-12">
+          <div class="block block-rounded js-appear-enabled animated fadeIn bg-gray-lighter" data-toggle="appear">
+            <div class="block-content block-content-full border-left border-3x border-dark">             
+              <p class="text-muted mb-0 mt-0 font-size-details text-uppercase font-w700 text-center">
+                Puede portularse al programa y se le notificara la programación. Si ya esta postulado, puede cancelar su postulación.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- END Basic Elements -->
     </div>
     <div class="block-content block-content-full block-content-sm bg-body-light text-center">
         <button type="submit" class="btn btn-hero-info">
-            <i class="fa fa-save"></i> Guardar
+            <i class="fa fa-save"></i> Postularme
         </button>
     </div>  
   </div>
@@ -153,53 +164,8 @@
 
   $(function () {  
 
-    $(".select-disabled").attr("disabled",true);
-    $('#id_nucleo').on('change',onSelectNucleoChange);
 
   });
-
-  function onSelectNucleoChange(){
-
-    if($(this).val() === 'default'){
-
-      $('#id_programa').html('<option value="default" selected>'+'Seleccione...'+'</option>');          
-      $('#id_programa').attr("disabled",true);  
-      return;
-
-    }
-
-    //AJAX
-    $.ajax({
-      url:"{{ url('ProgramaNucleo') }}",
-      type:"GET",
-      data: {'id_nucleo': $(this).val()},
-      dataType:'json',
-      success: function(data){
-
-        $('#id_programa').attr("disabled",false);   
-
-        html_select = '<option value="default" selected>Seleccione...</option>';
-
-        if(Object.keys(data).length == 0){}
-        else{
-
-          $.each(data, function(index,accountObj){
-            html_select += '<option value="'+accountObj.id+'">Por Cargar</option>';
-          });
-
-        }
-
-        $('#id_programa').html(html_select);
-        $("#id_programa option[value='default']").prop("selected",true);     
-
-      },
-      error: function(){
-
-      }
-
-    });
-
-  }
 
 </script>
         

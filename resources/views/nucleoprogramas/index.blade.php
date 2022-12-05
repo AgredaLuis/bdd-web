@@ -116,7 +116,7 @@
                       @endif
                     </td>
                     <td class="text-center p-2">
-                      <a href="{{ route('nucleoprogramas.edit',$elemento->id)}}" class="btn btn-secondary btn-sm pt-2" title="Ver Detalles" style="width: 50%;">
+                      <a href="{{ route('nucleoprogramas.edit',[ Crypt::encrypt($elemento->id) ])}}" class="btn btn-secondary btn-sm pt-2" title="Ver Detalles" style="width: 50%;">
                         <i class="si si-speech fa-2x i-font-details"></i>
                       </a>
                       <!--<a href="{{ route('nucleoprogramas.edit',$elemento->id)}}" class="btn btn-sm btn-outline-secondary pt-2 btn-font-details" title="Ver Detalles" style="width: 50%;" data-status="{{is_null($elemento->programacion)?'inactive':'active'}}">
