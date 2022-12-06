@@ -613,6 +613,15 @@ class DatabaseSeeder extends Seeder
                  'predefined'=>'Administrador',
                 ));
 
+                User::create(array(
+                 'id'=> 4,
+                 'user'=>'Administrador',
+                 'password'=> bcrypt('12345678'),
+                 'email'=>'jjgs.ve.2019@gmail.com',
+                 'is_activated'=>true,
+                 'predefined'=>'Administrador',
+                ));
+
                 //ASIGNAR ROLES DE USUARIO
                 RoleUser::create(array(
                  'role_id'=> 2,
@@ -631,6 +640,13 @@ class DatabaseSeeder extends Seeder
                 RoleUser::create(array(
                  'role_id'=> 2,
                  'user_id'=>3,
+                 'is_activated'=> true,
+                 'is_predefined'=>true,
+                ));
+
+                RoleUser::create(array(
+                 'role_id'=> 2,
+                 'user_id'=>4,
                  'is_activated'=> true,
                  'is_predefined'=>true,
                 ));
