@@ -74,6 +74,7 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 
 		//ESTUDIANTES PROGRAMA
 		Route::get('/aspirantes/index', 'AspiranteController@index')->name('aspirantes.index');
+		Route::get('/postulacion','NucleoProgramaController@onPostulacion')->name('postulacion');
 
 		//MUNICIPIO
 		Route::get('/MunicipioEstado','MunicipioController@getMunicipiosEstado')->name('MunicipioEstado');

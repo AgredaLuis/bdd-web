@@ -11,6 +11,7 @@ use Yajra\DataTables\DataTables;
 use App\NucleoPrograma;
 use App\Nucleo;
 use App\Grado;
+use App\EstudiantePrograma;
 
 class NucleoProgramaController extends Controller
 {
@@ -59,6 +60,38 @@ class NucleoProgramaController extends Controller
 
         return $NucleoProgramas;
           
+    }
+
+    public function onPostulacion(Request $request)
+    {
+
+        DB::beginTransaction();
+
+        $EstudiantePrograma = new EstudiantePrograma;
+        $EstudiantePrograma->id_persona = $request->id_persona;
+        $EstudiantePrograma->condicion = 'P';
+        $EstudiantePrograma->id_nucleo_programa = $request->id_nucleo_programa;
+
+        if($EstudiantePrograma->save()){
+
+            $respuesta["type"]='success';
+            $respuesta["msj"]='Se ha postulado correctamente.';
+            $respuesta["titlemsg"]='Todo bien';
+
+            DB::commit();
+
+        }else{
+
+            DB::rollBack();
+
+            $respuesta["type"]='danger';
+            $respuesta["msj"]='No se pudo realizar la operación, por favor intente de nuevo más tarde.';
+            $respuesta["titlemsg"]='Algo ha salido mal';
+
+        }
+
+        return Response()->json($respuesta); 
+       
     }
 
 }

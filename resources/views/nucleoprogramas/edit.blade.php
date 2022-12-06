@@ -152,7 +152,7 @@
       <!-- END Basic Elements -->
     </div>
     <div class="block-content block-content-full block-content-sm bg-body-light text-center">
-        <button type="submit" class="btn btn-hero-info">
+        <button type="submit" class="btn btn-hero-info" onclick="onPostularme()">
             <i class="fa fa-save"></i> Postularme
         </button>
     </div>  
@@ -166,6 +166,30 @@
 
 
   });
+
+  function onPostularme(){
+    //AJAX
+    $.ajax({
+      url:"{{ url('postulacion') }}",
+      async: false,
+      type:"GET",
+      data: {
+        'id_persona': "{{auth()->user()->persona->id}}",
+        'id_nucleo_programa': "{{$NucleoPrograma->id}}",
+      },
+      dataType:'json',
+      success: function(data){
+
+        Swal.fire(data.titlemsg,data.msj,data.type);      
+
+      },
+      error: function(){
+
+      }
+
+    });
+
+  }
 
 </script>
         

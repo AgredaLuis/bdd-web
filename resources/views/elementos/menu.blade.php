@@ -40,7 +40,7 @@
           <span>Mis Datos Personales</span></a>
       </li>
       <li class="nav-item {{$pluck['NavItemActive'] == 'ofertaacademica'?'nav-item-active':''}}">
-        <a class="nav-link" href="{{ route('nucleoprogramas.index')}}">
+        <a class="nav-link" href="{{ route('nucleoprogramas.index')}}" id="nav-link-oferta-academica">
           <i class="fa fa-graduation-cap"></i>
           <span>Oferta Académica</span></a>
       </li>
@@ -56,7 +56,7 @@
       </li>-->
       <li class="nav-item {{$pluck['NavItemActive'] == 'aspirantes'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('aspirantes.index') }}">
-          <i class="fa fa-graduation-cap"></i>
+          <i class="fa fa-user-graduate"></i>
           <span>Aspirantes</span></a>
       </li>
       <!--<li class="nav-item {{$pluck['NavItemActive'] == 'programas'?'nav-item-active':''}}">
