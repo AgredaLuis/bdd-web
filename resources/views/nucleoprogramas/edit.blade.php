@@ -120,7 +120,7 @@
             }}
           </div>
         </div>
-        <div class="col-8">
+        <!--<div class="col-8">
           <div class="form-group">
             <label for="example-text-input text" class="text-uppercase font-label-form font-w700">Mencion</label>
             {{
@@ -136,7 +136,7 @@
               )
             }}
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="row push">
         <div class="col-12">
