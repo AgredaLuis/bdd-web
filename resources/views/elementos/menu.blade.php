@@ -59,6 +59,11 @@
           <i class="fa fa-user-graduate"></i>
           <span>Aspirantes</span></a>
       </li>
+      <li class="nav-item {{$pluck['NavItemActive'] == 'pago'?'nav-item-active':''}}">
+        <a class="nav-link" href="{{ route('pago.index') }}">
+          <i class="fa fa-wallet"></i>
+          <span>Mis Pagos</span></a>
+      </li>
       <!--<li class="nav-item {{$pluck['NavItemActive'] == 'programas'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('programas.index') }}">
           <i class="fa fa-graduation-cap"></i>

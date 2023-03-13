@@ -32,6 +32,8 @@ class LoginController extends Controller
      *
      * @var string
      */
+    
+    #COMENTEEE
     protected $redirectTo = '/home';
 
     /**
@@ -39,6 +41,19 @@ class LoginController extends Controller
      *
      * @return void
      */
+/*
+    public function redirectTo(){
+
+        $user = Auth::user()->is_admin;
+
+        $this->redirectTo = $user ? route('/home') : return "estudiante";
+
+        return $this-> redirectTo;
+
+    }
+
+*/
+    
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

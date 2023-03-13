@@ -17,4 +17,12 @@ class RoleUser extends Model
         'role_id', 'user_id','is_activated','is_predefined','token',
     ];
 
+    public function role(){
+
+    	$usuario = User::where("id", "=", Auth::user()->id)->first();
+    	#Retorna el tipo de usuario
+		return $usuario->user;
+
+    }
+    
 }

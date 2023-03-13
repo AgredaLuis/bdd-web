@@ -20,7 +20,7 @@
 <!-- Onboarding Modal -->
 <div class="modal fade" id="modal-onboarding" tabindex="-1" role="dialog" aria-labelledby="modal-onboarding" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content rounded overflow-hidden bg-image" style="background-image: url('Dashmix/src/assets/media/photos/photo24.jpg');">
+        <div class="modal-content rounded overflow-hidden bg-image" style="background-image: url('Dashmix/src/assets/media/photos/photo24.jpg')">
             <div class="row">
                 <div class="col-md-5">
                     <div class="p-3 text-right text-md-left">

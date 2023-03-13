@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         Model::unguard();//ACTIVANDO INSERCION MASIVA DE DATOS EN LAS TABLAS
     		//CONFIGURACIONWEB
 	            Configuracionweb::create(array(
@@ -826,5 +827,12 @@ class DatabaseSeeder extends Seeder
                 ));
 
         Model::reguard();
+
+        //LLAMAR A LA CLASE EstudianteSeeder
+        $this->call(EstudianteSeeder::class);
+
+        //LLAMAR A LA CLASE ProfesorSeeder
+        $this->call(ProfesorSeeder::class);
+        
     }
 }

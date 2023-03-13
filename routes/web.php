@@ -11,6 +11,23 @@
 |
 */
 
+use App\User;
+use App\RoleUser;
+
+/*
+//PRUEBAS 
+use App\User;
+use App\RoleUser;
+
+Route::get('/estudiante', function(){
+
+	$user = User::where("id", "=", 1)->first();
+	return $user->user;
+
+});
+*/
+
+
 //**********************************************************************//
 // Ruta que dirige a la seccion de INICIAR SESION, esta es la ruta raiz //
 Route::get('/', 'Auth\LoginController@showLoginForm');
@@ -82,4 +99,27 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 		//PARROQUIA
 		Route::get('/ParroquiaMunicipio','ParroquiaController@getParroquiasMunicipio')->name('ParroquiaMunicipio');	
 
+		//RETORNA EL ROL DEL USUARIO
+		Route::get('/estudiante', function(){
+
+			$usuario = User::where("id", "=", Auth::user()->id)->first();
+
+			#El tipo de usuario
+			if($usuario->user == 'Estudiante'){
+				return "Es estudiante";
+			}
+			else return "No es estudiante";
+			#Retorna el tipo de usuario
+			#return $usuario->user;
+
+		});
+
+		//**********************************************************************//
+		//Ruta que dirige a la seccion de Pagos
+	Route::get('/pago/index', 'PagoController@index')->name('pago.index');
+	
+
 	});
+
+
+
