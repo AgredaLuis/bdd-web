@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 vendor.rar
+vendor.zip
 .env
 .env.backup
 .phpunit.result.cache
