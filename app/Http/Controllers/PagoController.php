@@ -17,14 +17,18 @@ class PagoController extends Controller
      */
     public function index()
     {
-    
+        $pagos = Pago::all();
         return view('pago.index',
         [
             'pluck' => ['NavItemActive' => 'pago'],
+            'pagos' => $pagos
         ]
         );
     }
-
+    
+    public function new(){
+        return view('pago.new',['pluck' => ['NavItemActive' => 'pago']]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,8 +37,7 @@ class PagoController extends Controller
      */
     public function create()
     {
-        $pago = Pago::all();
-        $dd($pago);
+
     }
 
     /**
@@ -45,7 +48,17 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
+        $pago = new Pago();
+        $pago->referencia = $request->referencia;
+        $pago->bancoEmisor = $request->bancoEmisor;
+        $pago->fechaPago = $request->fechaPago;
+        $pago->descripcion = $request->descripcion;
+        $pago->monto = $request->monto;
+
+        $pago->save();
+
+        return back();
     }
 
     /**
@@ -57,6 +70,10 @@ class PagoController extends Controller
     public function show($id)
     {
         //
+        $pago = Pago::findOrFail($id);
+        $pluck = ['NavItemActive' => 'pago'];
+
+        return view('pago.show', compact('pago', 'pluck'));
     }
 
     /**
