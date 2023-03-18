@@ -1,8 +1,12 @@
 /node_modules
 /public/hot
 /public/storage
+/public
 /storage/*.key
 /vendor
+vendor.rar
+vendor.zip
+bdd-web.zip
 .env
 .env.backup
 .phpunit.result.cache
