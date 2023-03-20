@@ -3,6 +3,7 @@
 /public/storage
 /public
 /storage/*.key
+
 /vendor
 vendor.rar
 vendor.zip
