@@ -30,6 +30,9 @@ class PagoController extends Controller
         return view('pago.new',['pluck' => ['NavItemActive' => 'pago']]);
     }
 
+    public function adminpago(){
+        return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin']]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -55,6 +58,7 @@ class PagoController extends Controller
         $pago->fechaPago = $request->fechaPago;
         $pago->descripcion = $request->descripcion;
         $pago->monto = $request->monto;
+        $pago->procesado = 0;
         /* $pago->procesado = $request->procesado; */
 
         $pago->save();

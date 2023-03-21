@@ -64,11 +64,13 @@
           <i class="fa fa-wallet"></i>
           <span>Mis Pagos</span></a>
       </li>
-      <!--<li class="nav-item {{$pluck['NavItemActive'] == 'programas'?'nav-item-active':''}}">
-        <a class="nav-link" href="{{ route('programas.index') }}">
+      @if (Auth::user()->predefined == 'Administrador')
+      <li class="nav-item {{$pluck['NavItemActive'] == 'pagoadmin'?'nav-item-active':''}}">
+        <a class="nav-link" href="{{ route('pago.adminpago') }}">
           <i class="fa fa-graduation-cap"></i>
-          <span>Programas</span></a>
-      </li>-->
+          <span>Administrador de Pagos</span></a>
+      </li>
+      @endif
 
       <?php echo session()->get('Menu');?>
 

@@ -58,9 +58,15 @@
                     <td class="text-center">
                       {{ $pago->monto }}
                     </td>
-                    <!-- <td class="text-center">
-                      {{ $pago->procesado }}
-                    </td> -->
+                    @if ($pago->procesado == 0)
+                      <td class="text-center text-warning">
+                        Procesando
+                      </td>
+                    @else
+                      <td class="text-center text-success">
+                          Procesado
+                      </td>
+                    @endif
                 </tr>
               @endforeach()
             </tbody>

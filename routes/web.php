@@ -121,6 +121,8 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 	Route::get('/pago/{id?}', 'PagoController@show')->name('pago.show');
 	Route::post('/pago', 'PagoController@store')->name('pago.store');
 
+	Route::get('/pagos/adminpago', 'PagoController@adminpago')->name('pago.adminpago');
+
 	});
 
 
