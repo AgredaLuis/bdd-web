@@ -28,7 +28,7 @@
           <table class="table table-vcenter table-striped display nowrap table-hover table-bordered" id="table-aspirantes">
             <thead>
                 <tr class="text-uppercase font-size-sm text-center">
-                    <th class="font-w700">Id</th>
+                    <!-- <th class="font-w700">Id</th> -->
                     <th class="font-w700">N Ref</th>
                     <th class="font-w700">Banco Emisor</th>
                     <th class="font-w700">Fecha Pago</th>
@@ -40,9 +40,9 @@
             <tbody class="text-uppercase tbody-font">
               @foreach($pagos as $pago)
                 <tr>
-                    <td class="text-center">
+                    <!-- <td class="text-center">
                       <a href="{{ route('pago.show', $pago) }}">{{ $pago->id }}</a>
-                    </td>
+                    </td> -->
                     <td class="text-left">
                       {{ $pago->referencia }}
                     </td>

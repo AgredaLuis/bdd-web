@@ -21,8 +21,7 @@ class CreatePagosTable extends Migration
             $table->string('descripcion',50);
             $table->decimal('monto',8,2);
             $table->boolean('procesado');
-            $table->timestamps();
-            $table->boolean('procesado');         
+            $table->timestamps();        
         });
     }
 
