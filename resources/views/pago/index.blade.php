@@ -34,12 +34,13 @@
                     <th class="font-w700">Fecha Pago</th>
                     <th class="font-w700">Descripcion</th>
                     <th class="font-w700">Monto</th>
+                    <th class="font-w700">Procesado</th>
                 </tr>
             </thead>
             <tbody class="text-uppercase tbody-font">
               @foreach($pagos as $pago)
                 <tr>
-                    <td class="text-left">
+                    <td class="text-center">
                       <a href="{{ route('pago.show', $pago) }}">{{ $pago->id }}</a>
                     </td>
                     <td class="text-left">
@@ -54,19 +55,24 @@
                     <td class="text-left">
                       {{ $pago->descripcion }}
                     </td>
-                    <td class="text-left">
+                    <td class="text-center">
                       {{ $pago->monto }}
                     </td>
+                    <!-- <td class="text-center">
+                      {{ $pago->procesado }}
+                    </td> -->
                 </tr>
               @endforeach()
             </tbody>
           </table>
           <div class="row">
             <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
-              <a class="nav-link" href={{ route('pago.new') }}><i class="fa fa-credit-card"></i><span class="text-uppercase ml-2">Ingresar Deposito</span></a>
+              <a class="nav-link" href={{ route('pago.new') }}>
+                <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">Ingresar Deposito</span>
+              </a>
             </button>
             <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
-              <i class="fa fa-search"></i><span class="text-uppercase ml-2">Buscar Deposito</span>
+              <i class="fa fa-search"></i><span class="text-uppercase ml-2 ">Buscar Deposito</span>
             </button>
           </div>
 @endsection

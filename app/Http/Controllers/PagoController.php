@@ -55,10 +55,11 @@ class PagoController extends Controller
         $pago->fechaPago = $request->fechaPago;
         $pago->descripcion = $request->descripcion;
         $pago->monto = $request->monto;
+        /* $pago->procesado = $request->procesado; */
 
         $pago->save();
 
-        return back();
+        return redirect()->action('PagoController@index');
     }
 
     /**

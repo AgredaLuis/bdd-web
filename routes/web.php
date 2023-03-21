@@ -117,7 +117,7 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 		//**********************************************************************//
 		//Ruta que dirige a la seccion de Pagos
 	Route::get('/pago/index', 'PagoController@index')->name('pago.index');
-	Route::get('/pago/new', 'PagoController@new')->name('pago.new');
+	Route::get('/pago/new', 'PagoController@new')->name('pago.new'); //aqui llama a la interfaz para nuevo pago
 	Route::get('/pago/{id?}', 'PagoController@show')->name('pago.show');
 	Route::post('/pago', 'PagoController@store')->name('pago.store');
 
