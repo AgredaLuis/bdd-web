@@ -15,9 +15,12 @@ class CreatePagosTable extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('codigo',10);
+            $table->string('referencia',10);
+            $table->string('bancoEmisor',50);
+            $table->date('fechaPago');
             $table->string('descripcion',50);
             $table->decimal('monto',8,2);
+            $table->boolean('procesado');
             $table->timestamps();
         });
     }
