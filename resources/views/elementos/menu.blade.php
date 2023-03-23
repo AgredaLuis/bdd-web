@@ -64,7 +64,8 @@
           <i class="fa fa-wallet"></i>
           <span>Mis Pagos</span></a>
       </li>
-      @if (Auth::user()->predefined == 'Administrador')
+      <!-- Administrador -->
+      @if (Auth::user()->user_type == 'admin')
       <li class="nav-item {{$pluck['NavItemActive'] == 'pagoadmin'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('pago.adminpago') }}">
           <i class="fa fa-graduation-cap"></i>

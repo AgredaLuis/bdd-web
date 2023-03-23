@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Pago;
 
 use DB;
@@ -17,7 +18,8 @@ class PagoController extends Controller
      */
     public function index()
     {
-        $pagos = Pago::all();
+        $pagos = DB::table('pagos')->where('user_id','=',Auth::user()->id->toSting())->get();
+        
         return view('pago.index',
         [
             'pluck' => ['NavItemActive' => 'pago'],
@@ -59,6 +61,7 @@ class PagoController extends Controller
         $pago->descripcion = $request->descripcion;
         $pago->monto = $request->monto;
         $pago->procesado = 0;
+        $pago->user_id = Auth::user()->id;
         /* $pago->procesado = $request->procesado; */
 
         $pago->save();

@@ -12,4 +12,8 @@ class Pago extends Model
 
     protected $fillable=['codigo','descripcion','monto'];
 
+    public function scopeOrderDesc($query){
+        return $query->select('*')->orderBy('fechaPago');
+    }
+
 }
