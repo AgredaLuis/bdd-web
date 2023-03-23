@@ -19,25 +19,66 @@
 
 <div class="col-12">
   <div class="block block-rounded js-appear-enabled animated fadeIn bg-gray-lighter" data-toggle="appear">
-    <div class="block-content block-content-full border-left border-3x border-dark">             
+    <div class="block-content block-content-full border-left border-3x border-dark">
       <p class="text-muted mb-0 mt-0 font-size-details text-uppercase font-w700 text-center">
         Informacion correspondiente de depositos por favor mantenerlo estos datos en privado.
       </p>
     </div>
-  </div> 
-  <form action={{ route('pago.store') }} method="POST">
-    @csrf
-    <input type="text" name="referencia" id="referencia" placeholder="Numero de Referencia">
-    <input type="text" name="bancoEmisor" id="bancoEmisor" placeholder="Banco Emisor">
-    <input type="date" name="fechaPago" id="fechaPago" placeholder="Fecha de pago">
-    <input type="text" name="descripcion" id="descripcion" placeholder="Decripcion">
-    <input type="text" name="monto" id="monto" placeholder="Monto">
+  </div>
+  <div class="block block-rounded block-bordered mt-4 block-mode-loading-refresh" id="block-oferta">
+    <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
+      <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Registrar dato de pago</h5>
+    </div>
+    <!-- <div class="block-header block-header-default bg-white text-left pt-2 pb-2"> -->
 
+      <form action={{ route('pago.store') }} method="POST">
+        @csrf
+        <div id="OpcionSeleccionada"></div>
+        <div class="mb-3 col-5">
+          <label for="exampleInputEmail1" class="form-label">Numero de referencia</label>
+          <input type="text" name="referencia" class="form-control" id="referemcoa" placeholder="002555343" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3 col-5">
+          <label for="BancoEmisor" class="form-label">Banco Emisor</label>
+          <input type="text" name="bancoEmisor" id="bancoEmisor" class="form-control" placeholder="Banesco">
+        </div>
+
+        <div class="mb-3 col-5">
+          <label for="fechaPago" class="form-label">Fecha realizado</label>
+          <input type="date" name="fechaPago" id="fechaPago" class="form-control" placeholder="Fecha de pago">
+        </div>
+
+        <div class="mb-3 col-5">
+          <label for="descripcion" class="form-label">Descripcion</label>
+          <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Pago del curso ....">
+        </div>
+
+        <div class="mb-3 col-5">
+          <label for="imagen_comprobante" class="form-label">Captura de pago(.pdf)</label>
+          <input type="file" name="imagen_comprobante" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3 col-5">
+          <label for="monto" class="form-label">Monto</label>
+          <input type="text" name="monto" class="form-control" placeholder="monto en numeros enteros" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+
+        <!-- <input type="text" name="referencia" id="referencia" placeholder="Numero de Referencia">
+          <input type="text" name="bancoEmisor" id="bancoEmisor" placeholder="Banco Emisor"> -->
+        <!-- <input type="date" name="fechaPago" id="fechaPago" placeholder="Fecha de pago"> -->
+        <!-- <input type="text" name="descripcion" id="descripcion" placeholder="Decripcion"> -->
+        <!-- <input type="text" name="monto"  disabled="true" value=25 id="monto" placeholder="Monto"> -->
+
+    <!-- </div> -->
     <br>
-    <br>
-    <button type="submit" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
-      <i class="fa fa-credit-card"></i><span class="text-uppercase ml-2">Enviar</span>
+    <div class="pl-4 pb-4">
+    <button type="submit" class="btn btn-sm btn-dark pt-2 p-2 btn-details" id="restart-filter" title="Limpiar Filtros">
+      <i class="fa fa-credit-card"></i><span class="text-uppercase ml-2 p-2 ">Guardar</span>
     </button>
-  </form>
-</div>
-@endsection
+    </div>
+    </form>
+
+  </div>
+  @endsection
