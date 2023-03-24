@@ -29,6 +29,7 @@ class PagoController extends Controller
     }
 
     public function adminpago(){
+        request()->user()->authorizeRoles(['Administrador']);
         return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin']]);
     }
     /**
