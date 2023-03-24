@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Pago;
-
+use App\Referencia;
 use DB;
 
 
@@ -33,6 +34,11 @@ class PagoController extends Controller
     public function adminpago(){
         return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin']]);
     }
+
+    public function referencias(){
+        return view('pago.referencias', ['pluck' => ['NavItemActive' => 'referencias']]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -79,6 +85,23 @@ class PagoController extends Controller
         $pluck = ['NavItemActive' => 'pago'];
 
         return view('pago.show', compact('pago', 'pluck'));
+    }
+
+    public function importar(Request $request){
+        if($request->hasFile('documento')){
+            $path = $request->file('documento')->getRealPath();
+            $datos = Excel::load($path, function($reader){})->get();
+
+            if(!empty($datos) && $datos->count()){
+                $datos = $datos->toArray();
+                for($i=0; $i < count($datos); $i++){
+                    $datosImportar[] = $datos[$i];
+                }
+            }
+
+            Referencia::insert($datosImportar);
+        }
+        return back();
     }
 
     /**

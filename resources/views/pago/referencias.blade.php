@@ -25,34 +25,23 @@
       </p>
     </div>
   </div>
-  <table class="table table-vcenter table-striped display nowrap table-hover table-bordered" id="table-aspirantes">
-    <thead>
-      <tr class="text-uppercase font-size-sm text-center">
-        <th class="font-w700">Fecha Deposito</th>
-        <th class="font-w700">N Ref</th>
-        <th class="font-w700">Banco</th>
-        <th class="font-w700">Confirmar</th>
-      </tr>
-    </thead>
-    <tbody class="text-uppercase tbody-font">
-      <tr>
-        <td class="text-left">
-        </td>
-        <td class="text-left">
-        </td>
-        <td class="text-left">
-        </td>
-        <td>
-          <input type="checkbox" name="estado" id="estado">
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
-  <br />
-  <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
-    <a class="nav-link" href={{ route('pago.referencias') }}>
-      <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">ingresar Documento excel</span>
-    </a>
-  </button>
+  <form action="{{ url('referencias/importar')}}" method="post" enctype="multipart/form-data">
+    @csrf
+
+    <div class="mb-3 col-5">
+      <label for="imagen_comprobante" class="form-label">Arvhico de tablas(.xlsx)</label>
+      <input type="file" name="documento" class="form-control">
+    </div>
+
+    <!-- <div class="col-md-6">
+      <input type="file" name="documento">
+    </div> -->
+    <button type="submit" class="btn btn-sm btn-dark p-2 btn-details ml-2" id="restart-filter" title="Limpiar Filtros">
+      <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">Actulizar Referencias</span>
+    </button>
+
+  </form>
+
+
   @endsection

@@ -123,6 +123,9 @@ Route::get('/user/activation/{token}','Auth\RegisterController@userActivation')-
 
 	Route::get('/pagos/adminpago', 'PagoController@adminpago')->name('pago.adminpago');
 
+	Route::get('/referencias', 'PagoController@referencias')->name('pago.referencias');
+	Route::post('/referencias/importar', 'PagoController@importar')->name('pago.importar');
+
 	});
 
 
