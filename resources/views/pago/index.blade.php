@@ -40,9 +40,9 @@
     <tbody class="text-uppercase tbody-font">
       @foreach($pagos as $pago)
       <tr>
-        <!-- <td class="text-center">
-                      <a href="{{ route('pago.show', $pago) }}">{{ $pago->id }}</a>
-                    </td> -->
+        <td class="text-center">
+          <a href="{{ route('pago.show', $pago->id) }}">{{ $pago->id }}</a>
+        </td>
         <td class="text-left">
           {{ $pago->referencia }}
         </td>
@@ -68,7 +68,7 @@
         </td>
         @endif
       </tr>
-      @endforeach()
+      @endforeach
     </tbody>
   </table>
   <div class="row">

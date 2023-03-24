@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->char('estatus', 1)->default('A')->nullable()->comment('A = Activo, D = Desactivo');
             $table->string('remember_token',255)->nullable();
             $table->boolean('is_activated')->default(0);
-            $table->enum('user_type',['admin','estudiante','profesor']);
             $table->string('predefined')->default('Invitado');
             $table->timestamps();
 

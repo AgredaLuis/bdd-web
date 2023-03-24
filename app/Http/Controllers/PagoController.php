@@ -17,15 +17,11 @@ class PagoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $pagos = DB::table('pagos')->where('user_id','=',Auth::user()->id->toSting())->get();
-        
-        return view('pago.index',
-        [
-            'pluck' => ['NavItemActive' => 'pago'],
-            'pagos' => $pagos
-        ]
-        );
+    {   
+        $pagos = DB::select('select * from pagos where user_id = ?', [Auth::user()->id]);
+        $pluck = ['NavItemActive' => 'pago'];
+
+        return view('pago.index',['pluck' => ['NavItemActive' => 'pago'], 'pagos' => $pagos]);
     }
     
     public function new(){
