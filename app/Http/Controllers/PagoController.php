@@ -29,7 +29,8 @@ class PagoController extends Controller
     public function index()
     {   
         request()->user()->authorizeRoles(['Estudiante']);
-        $pagos = DB::select('select * from pagos where user_id = ?', [Auth::user()->id]);
+        //$pagos = DB::select('select * from pagos where user_id = ?', [Auth::user()->id]);
+        $pagos = Pago::all();
         $pluck = ['NavItemActive' => 'pago'];
 
         return view('pago.index',['pluck' => ['NavItemActive' => 'pago'], 'pagos' => $pagos]);
@@ -43,6 +44,10 @@ class PagoController extends Controller
         request()->user()->authorizeRoles(['Administrador']);
         $pagos = Pago::all();
         return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin'], 'pagos' => $pagos]);
+    }
+
+    public function confirmarPagos(){
+        return request()->all();
     }
 
     public function referencias(){
@@ -68,6 +73,7 @@ class PagoController extends Controller
     public function store(Request $request)
     {
         //return $request->all();
+        $persona = Persona::find(auth()->user()->id);
         $pago = new Pago();
         $pago->referencia = $request->referencia;
         $pago->bancoEmisor = $request->bancoEmisor;
@@ -75,8 +81,7 @@ class PagoController extends Controller
         $pago->descripcion = $request->descripcion;
         $pago->monto = $request->monto;
         $pago->procesado = 0;
-        $pago->user_id = Auth::user()->id;
-        /* $pago->procesado = $request->procesado; */
+        $pago->persona()->save($persona);
 
         $pago->save();
 

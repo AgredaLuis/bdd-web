@@ -26,7 +26,7 @@ class Persona extends Model
 
     public function user()
     {
-        return $this->belongTo(User::class);
+        return $this->belongTo(User::class, 'user_id');
     }
 
     public function pagos(){

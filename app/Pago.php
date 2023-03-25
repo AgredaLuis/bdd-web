@@ -13,6 +13,6 @@ class Pago extends Model
     protected $fillable=['rerefencia','descripcion','monto'];
 
     public function persona(){
-        return $this->belongsTo(Persona::class);
+        return $this->belongsTo(Persona::class, 'persona_id');
     }
 }

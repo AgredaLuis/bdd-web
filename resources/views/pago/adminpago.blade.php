@@ -46,10 +46,10 @@
           {{ $pago->referencia }}
         </td>
         <td class="text-left">
-          {{ $pago->banco }}
+          {{ $pago->bancoEmisor }}
         </td>
         <td class="text-left">
-          {{ $pago->persona()->nombre }}
+          {{ $pago->persona->ci }}
         </td>
         <td class="text-left">
           {{ 'Imagen por subir' }}
@@ -65,7 +65,12 @@
   <br />
   <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
     <a class="nav-link" href={{ route('pago.referencias') }}>
-      <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">ingresar Documento excel</span>
+      <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">Ingresar Documento excel</span>
+    </a>
+  </button>
+  <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
+    <a class="nav-link" href={{ route('pago.confirmar') }} method="POST">
+      <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">Guardar</span>
     </a>
   </button>
   @endsection
