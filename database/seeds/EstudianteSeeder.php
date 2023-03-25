@@ -65,6 +65,7 @@ class EstudianteSeeder extends Seeder
             'id_parroquia'=>3,
             'ciudad'=>'CUMANA',
             'confirmado'=>false,
+            'user_id' => 5,
         ));
 
 
@@ -112,6 +113,7 @@ class EstudianteSeeder extends Seeder
             'id_parroquia'=>3,
             'ciudad'=>'CUMANA',
             'confirmado'=>false,
+            'user_id' => 6,
         ));
 
 		Model::reguard();

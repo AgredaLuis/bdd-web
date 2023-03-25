@@ -18,9 +18,7 @@ class Persona extends Model
         'ci', 'nombre','apellido','nacionalidad','genero','estatus_civil','fecha_nacimiento','email','telefono_movil','telefono_local','discapacidad','activo','imagen','trabajo_empresa','trabajo_cargo','trabajo_tiempo_servicio','direccion'/*,'id_estado','id_municipio','id_ciudad'*/,'id_parroquia','ciudad','confirmado',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */    
+    // Definicion de las relaciones con otras tablas 
     public function parroquia()
     {
         return $this->belongsTo(Parroquia::class, 'id_parroquia');
@@ -28,7 +26,11 @@ class Persona extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'email','email');
+        return $this->belongTo(User::class);
+    }
+
+    public function pagos(){
+        return $this->hasMany(Pago::class);
     }
 
     public function estudianteprograma()
@@ -36,12 +38,10 @@ class Persona extends Model
         return $this->belongsTo(EstudiantePrograma::class, 'id_persona');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany
-     */  
     public function titulos()
     {
         return $this->hasMany(Titulo::class,'id_persona');
     }
+    // Fin de las relaciones
     
 }

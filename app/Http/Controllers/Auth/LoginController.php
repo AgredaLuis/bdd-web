@@ -72,6 +72,9 @@ class LoginController extends Controller
     /**
      * Login para el sistema
      */
+    public function showLoginForm(){
+        return view('auth.signin');
+    }
     public function login(Request $request)
     {
         

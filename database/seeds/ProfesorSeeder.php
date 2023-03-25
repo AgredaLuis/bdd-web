@@ -64,6 +64,7 @@ class ProfesorSeeder extends Seeder
             'id_parroquia'=>3,
             'ciudad'=>'CUMANA',
             'confirmado'=>false,
+            'user_id' => 7,
         ));
 
 
@@ -111,6 +112,7 @@ class ProfesorSeeder extends Seeder
             'id_parroquia'=>3,
             'ciudad'=>'CUMANA',
             'confirmado'=>false,
+            'user_id' => 8,
         ));
 
         Model::reguard();

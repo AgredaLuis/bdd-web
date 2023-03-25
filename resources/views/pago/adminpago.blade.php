@@ -31,21 +31,34 @@
         <th class="font-w700">Fecha Deposito</th>
         <th class="font-w700">N Ref</th>
         <th class="font-w700">Banco</th>
+        <th class="font-w700">Estudiante</th>
+        <th class="font-w700">Vauche</th>
         <th class="font-w700">Confirmar</th>
       </tr>
     </thead>
     <tbody class="text-uppercase tbody-font">
+      @foreach($pagos as $pago)
       <tr>
         <td class="text-left">
+          {{ $pago->fechaPago }}
         </td>
         <td class="text-left">
+          {{ $pago->referencia }}
         </td>
         <td class="text-left">
+          {{ $pago->banco }}
+        </td>
+        <td class="text-left">
+          {{ $pago->persona()->nombre }}
+        </td>
+        <td class="text-left">
+          {{ 'Imagen por subir' }}
         </td>
         <td>
-          <input type="checkbox" name="estado" id="estado">
+          <input type="checkbox" name="estado" id="estado" class="checkbox-inline">
         </td>
       </tr>
+      @endforeach
     </tbody>
   </table>
 

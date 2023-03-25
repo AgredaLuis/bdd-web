@@ -10,10 +10,9 @@ class Pago extends Model
 
     protected $primaryKey="id";
 
-    protected $fillable=['codigo','descripcion','monto'];
+    protected $fillable=['rerefencia','descripcion','monto'];
 
-    public function scopeOrderDesc($query){
-        return $query->select('*')->orderBy('fechaPago');
+    public function persona(){
+        return $this->belongsTo(Persona::class);
     }
-
 }

@@ -47,13 +47,15 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
      */
-    public function roles()
-    {
-        //$role_guest  = Role::where('name', 'Invitado')->first();
-        //return $this->belongsToMany('Role', 'role_id'='4');
+
+     // Definicion de las relaciones con otras tablas
+    public function roles(){
         return $this->belongsToMany(Role::class,'role_users');
-        //return $this->belongsToMany(Role::where('name', 'Invitado')->first());
     }
+    public function persona(){
+        return $this->hasOne(Persona::class);
+    }
+    // Fin de relaciones
 
     public function authorizeRoles($roles){
         abort_unless($this->hasAnyRole($roles), 401);    return true;
@@ -84,8 +86,4 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\hasOne
      */
-    public function persona()
-    {
-        return $this->hasOne(Persona::class, 'email','email');
-    }
 }

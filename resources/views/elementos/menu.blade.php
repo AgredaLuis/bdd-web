@@ -59,11 +59,16 @@
           <i class="fa fa-user-graduate"></i>
           <span>Aspirantes</span></a>
       </li>
+      
+      <!-- Estudiante solamente -->
+      @if(auth()->user()->hasRole('Estudiante'))
       <li class="nav-item {{$pluck['NavItemActive'] == 'pago'?'nav-item-active':''}}">
         <a class="nav-link" href="{{ route('pago.index') }}">
           <i class="fa fa-wallet"></i>
           <span>Mis Pagos</span></a>
       </li>
+      @endif
+
       <!-- Administrador -->
       @if (Auth::user()->hasRole('Administrador'))
       <li class="nav-item {{$pluck['NavItemActive'] == 'pagoadmin'?'nav-item-active':''}}">

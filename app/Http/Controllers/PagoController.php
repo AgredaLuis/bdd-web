@@ -28,6 +28,7 @@ class PagoController extends Controller
      */
     public function index()
     {   
+        request()->user()->authorizeRoles(['Estudiante']);
         $pagos = DB::select('select * from pagos where user_id = ?', [Auth::user()->id]);
         $pluck = ['NavItemActive' => 'pago'];
 
@@ -40,7 +41,8 @@ class PagoController extends Controller
 
     public function adminpago(){
         request()->user()->authorizeRoles(['Administrador']);
-        return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin']]);
+        $pagos = Pago::all();
+        return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin'], 'pagos' => $pagos]);
     }
 
     public function referencias(){

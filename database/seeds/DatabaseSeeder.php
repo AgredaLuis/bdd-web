@@ -754,6 +754,7 @@ class DatabaseSeeder extends Seeder
                  'id_parroquia'=>3,
                  'ciudad'=>'CUMANA',
                  'confirmado'=>false,
+                 'user_id' => 1,
                 ));
 
                 Persona::create(array(
@@ -778,6 +779,7 @@ class DatabaseSeeder extends Seeder
                  'id_parroquia'=>3,
                  'ciudad'=>'CUMANA',
                  'confirmado'=>false,
+                 'user_id' => 2,
                 ));
 
                 Persona::create(array(
@@ -802,7 +804,33 @@ class DatabaseSeeder extends Seeder
                  'id_parroquia'=>3,
                  'ciudad'=>'CUMANA',
                  'confirmado'=>false,
+                 'user_id' => 3,
                 ));
+
+                Persona::create(array(
+                    'id'=> 4,
+                    'ci'=>'30000000',
+                    'nombre'=> 'DARIO JOSE',
+                    'apellido'=>'LEMUZ LOAIZA',
+                    'nacionalidad'=>'V',
+                    'genero'=>'M',
+                    'estatus_civil'=>'S',
+                    'fecha_nacimiento'=>'1987-04-09',
+                    'email'=>'jjgs.ve.2019@gmail.com',
+                    'telefono_movil'=>'(0412) 088-3413',
+                    'telefono_local'=>'(0412) 088-3413',
+                    'discapacidad'=> NULL,                 
+                    'imagen'=>'img/user2-160x160.jpg',
+                    'trabajo_empresa'=>'universidad de oriente',
+                    'trabajo_cargo'=>'analista programador',
+                    'trabajo_tiempo_servicio'=>4,
+                    'activo'=>true,
+                    'direccion'=>'Fe y alegria. SUPER BLOQUES. BLOQUES 29. APTO. 01-05.',
+                    'id_parroquia'=>3,
+                    'ciudad'=>'CUMANA',
+                    'confirmado'=>false,
+                    'user_id' => 4,
+                   ));
 
                 //ESTUDIANTE PROGRAMA
                 EstudiantePrograma::create(array(
