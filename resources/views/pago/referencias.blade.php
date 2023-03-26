@@ -31,7 +31,7 @@
 
     <div class="mb-3 col-5">
       <label for="imagen_comprobante" class="form-label">Arvhico de tablas(.xlsx)</label>
-      <input type="file" name="documento" class="form-control">
+      <input type="file" name="documento" class="form-control-file">
     </div>
 
     <!-- <div class="col-md-6">

@@ -20,6 +20,7 @@ class CreatePagosTable extends Migration
             $table->date('fechaPago');
             $table->string('descripcion',50);
             $table->decimal('monto',8,2);
+            $table->binary('pdf')->nullable();;
             $table->boolean('procesado');
             $table->timestamps();        
         });

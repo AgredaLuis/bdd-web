@@ -31,7 +31,7 @@
     </div>
     <!-- <div class="block-header block-header-default bg-white text-left pt-2 pb-2"> -->
 
-      <form action={{ route('pago.store') }} method="POST">
+      <form action={{ route('pago.store') }} method="POST" enctype="multipart/form-data">
         @csrf
         <div id="OpcionSeleccionada"></div>
         <div class="mb-3 col-5">
@@ -55,8 +55,8 @@
         </div>
 
         <div class="mb-3 col-5">
-          <label for="imagen_comprobante" class="form-label">Captura de pago(.pdf)</label>
-          <input type="file" name="imagen_comprobante" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <label for="pdf" class="form-label">Captura de pago(.pdf)</label>
+          <input type="file" name="pdf" class="form-control-file" id="pdf">
         </div>
 
         <div class="mb-3 col-5">

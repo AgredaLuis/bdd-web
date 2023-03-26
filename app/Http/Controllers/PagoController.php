@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 
 
@@ -17,6 +20,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Pago;
 use App\Referencia;
 use DB;
+use App\Persona;
 
 
 class PagoController extends Controller
@@ -73,6 +77,12 @@ class PagoController extends Controller
     public function store(Request $request)
     {
         //return $request->all();
+
+        $this->validate($request, [
+            'pdf' => 'required|mimes:pdf|max:2048'
+        ]);
+
+
         $persona = Persona::find(auth()->user()->id);
         $pago = new Pago();
         $pago->referencia = $request->referencia;
@@ -80,10 +90,13 @@ class PagoController extends Controller
         $pago->fechaPago = $request->fechaPago;
         $pago->descripcion = $request->descripcion;
         $pago->monto = $request->monto;
-        $pago->procesado = 0;
-        $pago->persona()->save($persona);
+            // El archivo PDF se ha cargado correctamente
+        $pago->pdf = file_get_contents($request->file('pdf')->getRealPath());
 
+        $pago->procesado = 0;
+        $pago->persona()->associate($persona);
         $pago->save();
+
 
         return redirect()->action('PagoController@index');
     }
