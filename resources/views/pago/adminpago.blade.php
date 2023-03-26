@@ -25,63 +25,68 @@
       </p>
     </div>
   </div>
-  <table class="table table-vcenter table-striped display nowrap table-hover table-bordered" id="table-aspirantes">
-    <thead>
-      <tr class="text-uppercase font-size-sm text-center">
-        <th class="font-w700">Fecha Deposito</th>
-        <th class="font-w700">N Ref</th>
-        <th class="font-w700">Banco</th>
-        <th class="font-w700">Estudiante</th>
-        <th class="font-w700">Vauche</th>
-        <th class="font-w700">Confirmar</th>
-      </tr>
-    </thead>
-    <tbody class="text-uppercase tbody-font">
-      @foreach($pagos as $pago)
-      <tr>
-        <td class="text-left">
-          {{ $pago->fechaPago }}
-        </td>
-        <td class="text-left">
-          {{ $pago->referencia }}
-        </td>
-        <td class="text-left">
-          {{ $pago->bancoEmisor }}
-        </td>
-        <td class="text-left">
-          {{ $pago->persona->ci }}
-        </td>
-        <td class="text-left">
-          {{ 'Imagen por subir' }}
-        </td>
-        <td>
-          <input type="checkbox" name="estado" id="estado" class="checkbox-inline">
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-
-
-  <!-- <form action="{{ route('pagos.update', $pago->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="estado" value="procesado" {{ $pago->estado == 'procesado' ? 'checked' : '' }}>
-        <label class="form-check-label">Procesado</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Actualizar estado</button>
-</form> -->
-
+    <table class="table table-vcenter table-striped display nowrap table-hover table-bordered" id="table-aspirantes">
+      <thead>
+        <tr class="text-uppercase font-size-sm text-center">
+          <th class="font-w700">Fecha Deposito</th>
+          <th class="font-w700">N Ref</th>
+          <th class="font-w700">Banco</th>
+          <th class="font-w700">Estudiante</th>
+          <th class="font-w700">Vauche</th>
+          <th class="font-w700">DB Fecha</th>
+          <th class="font-w700">DB Ref</th>
+          <th class="font-w700">Confirmar</th>
+        </tr>
+      </thead>
+      <tbody class="text-uppercase tbody-font">
+        @foreach($pagos as $pago)
+          @if($pago->procesado == 0)
+            <tr>
+              <td class="text-left">
+                {{ $pago->fechaPago }}
+              </td>
+              <td class="text-left">
+                {{ $pago->referencia }}
+              </td>
+              <td class="text-left">
+                {{ $pago->bancoEmisor }}
+              </td>
+              <td class="text-left">
+                {{ $pago->persona->ci }}
+              </td>
+              <td class="text-left">
+                {{ 'Imagen por subir' }}
+              </td>
+              @if($pago->hasReferencia($pago->referencia))
+                <td class="text-left">
+                  {{ 'Referencia de fecha concuerda' }}
+                </td>
+                <td class="text-left">
+                  {{ 'Numero de referencia concuerda' }}
+                </td>
+                <td>
+                  <a href="{{ route('pago.confirmar',$pago->id) }}">Confirmar</a>
+                </td>
+              @else
+                <td class="text-left">
+                  {{ 'No existe en la db una referencia a este pago' }}
+                </td>
+                <td class="text-left">
+                  {{ 'No existe en la db una referencia a este pago' }}
+                </td>
+                <td>
+                  {{ 'No se puede confirmar' }}
+                </td>
+              @endif
+            </tr>
+          @endif
+        @endforeach
+      </tbody>
+    </table>
   <br />
-  <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
+  <button type="button" class="btn btn-sm btn-dark pt-1 btn-details">
     <a class="nav-link" href={{ route('pago.referencias') }}>
       <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">Ingresar Documento excel</span>
-    </a>
-  </button>
-  <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
-    <a class="nav-link" href={{ route('pago.confirmar') }} method="POST">
-      <i class="fa fa-credit-card text-light"></i><span class="text-uppercase ml-2 text-light">Guardar</span>
     </a>
   </button>
   @endsection

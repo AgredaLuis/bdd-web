@@ -29,10 +29,9 @@
     <div class="block-header block-header-default bg-white text-left pt-2 pb-2">
       <h5 class="block-title text-uppercase font-w700 font-size-sm text-black-75 border-bottom mt-4">Registrar dato de pago</h5>
     </div>
-    <!-- <div class="block-header block-header-default bg-white text-left pt-2 pb-2"> -->
-
       <form action={{ route('pago.store') }} method="POST" enctype="multipart/form-data">
         @csrf
+        @method('POST')
         <div id="OpcionSeleccionada"></div>
         <div class="mb-3 col-5">
           <label for="exampleInputEmail1" class="form-label">Numero de referencia</label>
@@ -63,15 +62,6 @@
           <label for="monto" class="form-label">Monto</label>
           <input type="text" name="monto" class="form-control" placeholder="monto en numeros enteros" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-
-
-        <!-- <input type="text" name="referencia" id="referencia" placeholder="Numero de Referencia">
-          <input type="text" name="bancoEmisor" id="bancoEmisor" placeholder="Banco Emisor"> -->
-        <!-- <input type="date" name="fechaPago" id="fechaPago" placeholder="Fecha de pago"> -->
-        <!-- <input type="text" name="descripcion" id="descripcion" placeholder="Decripcion"> -->
-        <!-- <input type="text" name="monto"  disabled="true" value=25 id="monto" placeholder="Monto"> -->
-
-    <!-- </div> -->
     <br>
     <div class="pl-4 pb-4">
     <button type="submit" class="btn btn-sm btn-dark pt-2 p-2 btn-details" id="restart-filter" title="Limpiar Filtros">

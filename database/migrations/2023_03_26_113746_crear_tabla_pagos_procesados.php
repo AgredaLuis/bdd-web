@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReferenciasTable extends Migration
+class CrearTablaPagosProcesados extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateReferenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('referencias', function (Blueprint $table) {
+        //
+        Schema::create('pagosProcesados', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('referencia');
-            $table->string('descripcion');
-            $table->integer('monto');
-            $table->date('fecha');
+            $table->unsignedBigInteger('pago_id');
+            $table->foreign('pago_id')->references('id')->on('pagos');
+            $table->timestamp('fecha');
         });
     }
 
@@ -29,6 +29,7 @@ class CreateReferenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('referencias');
+        //
+        Schema::dropIfExists('pagosProcesados');
     }
 }

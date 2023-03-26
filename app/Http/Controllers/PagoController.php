@@ -52,9 +52,19 @@ class PagoController extends Controller
         return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin'], 'pagos' => $pagos]);
     }
 
-    public function confirmarPagos()
+    public function confirmarPago($id)
     {
-        return request()->all();
+        $pago = Pago::find($id);
+        $procesado = DB::select('select pago_id from pagosProcesados where pago_id = ?',$id);
+        if($pago->id == $procesado){
+            dd('Pago ya procesado');
+        }else{
+            $pago->procesado = 1;
+            DB::insert('insert into pagosProcesados (pago_id) values (?)', [$pago->id]);
+            $pago->save();
+        }
+
+        return redirect()->action('PagoController@adminpago');
     }
 
     public function referencias()
@@ -79,11 +89,11 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->all();
+        // return $request->all();
 
-        $this->validate($request, [
-            'pdf' => 'required|mimes:pdf|max:2048'
-        ]);
+        // $this->validate($request, [
+        //     'pdf' => 'required|mimes:pdf|max:2048'
+        // ]);
 
 
         $persona = Persona::find(auth()->user()->id);
@@ -94,7 +104,9 @@ class PagoController extends Controller
         $pago->descripcion = $request->descripcion;
         $pago->monto = $request->monto;
         // El archivo PDF se ha cargado correctamente
-        $pago->pdf = file_get_contents($request->file('pdf')->getRealPath());
+        if($request->hasFile('pdf')){
+            $pago->pdf = file_get_contents($request->file('pdf')->getRealPath());
+        }
 
         $pago->procesado = 0;
         $pago->persona()->associate($persona);
