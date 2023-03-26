@@ -31,30 +31,34 @@ class PagoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         request()->user()->authorizeRoles(['Estudiante']);
         //$pagos = DB::select('select * from pagos where user_id = ?', [Auth::user()->id]);
         $pagos = Pago::all();
         $pluck = ['NavItemActive' => 'pago'];
 
-        return view('pago.index',['pluck' => ['NavItemActive' => 'pago'], 'pagos' => $pagos]);
-    }
-    
-    public function new(){
-        return view('pago.new',['pluck' => ['NavItemActive' => 'pago']]);
+        return view('pago.index', ['pluck' => ['NavItemActive' => 'pago'], 'pagos' => $pagos]);
     }
 
-    public function adminpago(){
+    public function new()
+    {
+        return view('pago.new', ['pluck' => ['NavItemActive' => 'pago']]);
+    }
+
+    public function adminpago()
+    {
         request()->user()->authorizeRoles(['Administrador']);
         $pagos = Pago::all();
         return view('pago.adminpago', ['pluck' => ['NavItemActive' => 'pagoadmin'], 'pagos' => $pagos]);
     }
 
-    public function confirmarPagos(){
+    public function confirmarPagos()
+    {
         return request()->all();
     }
 
-    public function referencias(){
+    public function referencias()
+    {
         return view('pago.referencias', ['pluck' => ['NavItemActive' => 'referencias']]);
     }
 
@@ -65,7 +69,6 @@ class PagoController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -90,7 +93,7 @@ class PagoController extends Controller
         $pago->fechaPago = $request->fechaPago;
         $pago->descripcion = $request->descripcion;
         $pago->monto = $request->monto;
-            // El archivo PDF se ha cargado correctamente
+        // El archivo PDF se ha cargado correctamente
         $pago->pdf = file_get_contents($request->file('pdf')->getRealPath());
 
         $pago->procesado = 0;
@@ -116,14 +119,16 @@ class PagoController extends Controller
         return view('pago.show', compact('pago', 'pluck'));
     }
 
-    public function importar(Request $request){
-        if($request->hasFile('documento')){
+    public function importar(Request $request)
+    {
+        if ($request->hasFile('documento')) {
             $path = $request->file('documento')->getRealPath();
-            $datos = Excel::load($path, function($reader){})->get();
+            $datos = Excel::load($path, function ($reader) {
+            })->get();
 
-            if(!empty($datos) && $datos->count()){
+            if (!empty($datos) && $datos->count()) {
                 $datos = $datos->toArray();
-                for($i=0; $i < count($datos); $i++){
+                for ($i = 0; $i < count($datos); $i++) {
                     $datosImportar[] = $datos[$i];
                 }
             }
@@ -132,6 +137,17 @@ class PagoController extends Controller
         }
         return back();
     }
+
+    /* public function updateEstado(Request $request, Pago $pago)
+    {
+        $pago->procesado = $request->input(1);
+        $pago->save();
+
+        return redirect()->route('pagos.adminpago', $pago->id)
+            ->with('success', 'Estado actualizado correctamente');
+    } */
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -166,8 +182,4 @@ class PagoController extends Controller
     {
         //
     }
-
 }
-
-
-

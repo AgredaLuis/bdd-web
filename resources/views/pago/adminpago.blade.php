@@ -62,6 +62,17 @@
     </tbody>
   </table>
 
+
+  <!-- <form action="{{ route('pagos.update', $pago->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="estado" value="procesado" {{ $pago->estado == 'procesado' ? 'checked' : '' }}>
+        <label class="form-check-label">Procesado</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar estado</button>
+</form> -->
+
   <br />
   <button type="button" class="btn btn-sm btn-dark pt-1 btn-details" id="restart-filter" title="Limpiar Filtros">
     <a class="nav-link" href={{ route('pago.referencias') }}>
