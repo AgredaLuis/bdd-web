@@ -19,7 +19,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 use App\Pago;
 use App\Referencia;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Persona;
 
 
@@ -145,7 +145,7 @@ class PagoController extends Controller
 
             Referencia::insert($datosImportar);
         }
-        return back();
+        return redirect()->action('PagoController@adminpago');
     }
 
     /* public function updateEstado(Request $request, Pago $pago)
