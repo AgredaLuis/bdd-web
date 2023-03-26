@@ -55,14 +55,12 @@ class PagoController extends Controller
     public function confirmarPago($id)
     {
         $pago = Pago::find($id);
-        $procesado = DB::select('select pago_id from pagosProcesados where pago_id = ?',$id);
-        if($pago->id == $procesado){
-            dd('Pago ya procesado');
-        }else{
-            $pago->procesado = 1;
-            DB::insert('insert into pagosProcesados (pago_id) values (?)', [$pago->id]);
-            $pago->save();
-        }
+
+        $pago->procesado = 1;
+        DB::insert('insert into pagosProcesados (pago_id) values (?)', [$pago->id]);
+        $pago->save();
+    
+
 
         return redirect()->action('PagoController@adminpago');
     }
